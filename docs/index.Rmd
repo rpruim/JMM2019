@@ -1,6 +1,6 @@
 ---
 title: "JMM Minicourses: <BR>Teaching Statistics Using R and RStudio"
-author: "Randall Pruim (Calvin College) and Shonda Kuiper (Grinnel College)"
+author: "Randall Pruim (Calvin College)<br>Shonda Kuiper (Grinnel College)"
 date: "January 2019"
 output: html_document
 ---
@@ -28,7 +28,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
  * MAA has a [survey they would like you fill out]().
 
-# Minicourse #2: Start Teaching Statistics with R and RStudio
+# Minicourse #2: <br>Start Teaching Statistics with R and RStudio
 
 ## Day 1: The Less Volume, More Creativity approach
 
@@ -63,7 +63,7 @@ in R
  * [R Markdown Cheet Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
 
   
-# Minicourse #12: Keep Teaching Statistics with R and RStudio
+# Minicourse #12: <br>Keep Teaching Statistics with R and RStudio
 
 ## Day 1: Data Wrangling with the tidyverse
 
