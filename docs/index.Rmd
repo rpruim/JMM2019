@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = TRUE)
   
 ## Feedback 
 
- * I've created a [**Google doc**]() where you can leave feedback, ask questions, etc.
+ * We've created a [**Google doc**](https://docs.google.com/document/d/18JhF4eUSzLxiB2jZ_HAh8LJ_w0DQladCWP50O51VUnA/edit?usp=sharing) where you can leave feedback, ask questions, etc.
 
  * MAA has a [survey they would like you fill out]().
 
@@ -109,11 +109,12 @@ You are welcome to work in your own local copy of R and RStudio if you prefer.  
   
 Packages can be installed or updated using the Packages tab in RStudio.
 
+
 ## Setting up your own RStudio Server  
 
  * If you ask, RStudio will provide you with the professional server for free for qualifying academic purposes.  Contact them for details to see if you qualify.
  
- * If you want to server tutorials, you will also need to set up RStudio Connect (and maybe a shiny server).  These aren't any harder than setting up RStudio Server, but they are separate software installs.
+ * If you want to serve tutorials, you will also need to set up RStudio Connect (and maybe a shiny server).  These aren't any harder than setting up RStudio Server, but they are separate software installs.
  
  * RStudio has lots of documentation about how to install and configure. For example, here is the [RStudio Server Pro admin guide](http://docs.rstudio.com/ide/server-pro/)
  
