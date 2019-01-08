@@ -26,7 +26,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
  * We've created a [**Google doc**](https://docs.google.com/document/d/18JhF4eUSzLxiB2jZ_HAh8LJ_w0DQladCWP50O51VUnA/edit?usp=sharing) where you can leave feedback, ask questions, etc.
 
- * MAA has a [survey they would like you fill out]().
+ * MAA has a [survey they would like you fill out](https://www.surveymonkey.com/r/5DF6YZP).
+
+--------------
 
 # Minicourse #2: <br>Start Teaching Statistics with R and RStudio
 
@@ -63,6 +65,7 @@ in R
  * [Prezi by Nick Horton](https://prezi.com/vq6l5yqpnqma/intro-to-r-markdown-cvc-2015/)
  * [R Markdown Cheet Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
 
+-------------
   
 # Minicourse #12: <br>Keep Teaching Statistics with R and RStudio
 
