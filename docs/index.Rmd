@@ -42,10 +42,11 @@ in R
 
 ### Resources
 
-  * Opening Slides: [[HTML]](Less-Volume/less-volume-jmm-2018.html) [[Rmd]](../Less-Volume/less-volume-jmm-2018.Rmd)
+  * Opening Slides: [[HTML]](less-volume-slides.html)
+  [[Rmd]](less-volume-slides.Rmd)
   
 
-  * Intro Tutorial: [rsconnect.calvin.edu/less-volume-plots/jmm2018/](http://rstudio.calvin.edu:3939/less-volume-plots/jmm2018/)
+  * Intro Tutorial: [rsconnect.calvin.edu/less-volume-jmm2019/](http://rstudio.calvin.edu:3939/less-volume-jmm2019/)
   
   
   * Refining `ggformula` plots: [rsconnect.calvin.edu/ggformula/refining/](http://rstudio.calvin.edu:3939/ggformula/refining/)
