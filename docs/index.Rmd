@@ -48,8 +48,7 @@ in R
   [[Rmd]](less-volume/less-volume-slides.Rmd)
   
 
-  * Intro Tutorial: [rsconnect.calvin.edu/less-volume-jmm2019/](http://rstudio.calvin.edu:3939/less-volume-jmm2019/)
-  
+  * Intro Tutorial: <http://rsconnect.calvin.edu/less-volume-jmm2019>
   
   * Refining `ggformula` plots: [rsconnect.calvin.edu/ggformula/refining/](http://rstudio.calvin.edu:3939/ggformula/refining/)
   
@@ -75,7 +74,7 @@ in R
 
 ### Resources
 
- * Data Wrangling: [rsconnect.calvin.edu/tidyverse/city-of-hope-2018/](http://rsconnect.calvin.edu/tidyverse/city-of-hope-2018/)
+ * Data Wrangling: <http://rsconnect.calvin.edu/wrangling-jmm2019>
     
     * has many uses, including preparing data for plotting
 
