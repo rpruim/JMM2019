@@ -42,8 +42,8 @@ in R
 
 ### Resources
 
-  * Opening Slides: [[HTML]](less-volume-slides.html)
-  [[Rmd]](less-volume-slides.Rmd)
+  * Opening Slides: [[HTML]](less-volume/less-volume-slides.html)
+  [[Rmd]](less-volume/less-volume-slides.Rmd)
   
 
   * Intro Tutorial: [rsconnect.calvin.edu/less-volume-jmm2019/](http://rstudio.calvin.edu:3939/less-volume-jmm2019/)
