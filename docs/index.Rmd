@@ -1,8 +1,17 @@
 ---
 title: "JMM Minicourses: <BR>Teaching Statistics Using R and RStudio"
-author: "Randall Pruim (Calvin College)<br>Shonda Kuiper (Grinnel College)"
 date: "January 2019"
-output: html_document
+output: 
+  rmarkdown::html_document:
+    theme: lumen
+  flexdashboard::flex_dashboard:
+    social: menu
+    source_code: embed
+    storyboard: true
+  prettydoc::html_pretty:
+    theme: hpstr
+    highlight: github
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -13,28 +22,33 @@ knitr::opts_chunk$set(echo = TRUE)
 <br>
 <br>
 
-####  This document is located at http://rpruim.github.io/JMM2019/
+# JMM 2019 {.tabset .tabset-fade .tabset-pills}
 
-<br>
+## Logistics
 
-## Wifi
+### This document is located at http://rpruim.github.io/JMM2019/
+
+### Presenters/Organizers: 
+
+  * Randall Pruim (Calvin College)
+  * Shonda Kuiper (Grinnel College)
+
+### Wifi
 
   * network: 
   * password: 
   
-## Feedback 
+### Feedback 
 
  * We've created a [**Google doc**](https://docs.google.com/document/d/18JhF4eUSzLxiB2jZ_HAh8LJ_w0DQladCWP50O51VUnA/edit?usp=sharing) where you can leave feedback, ask questions, etc.
 
  * MAA has a [survey they would like you fill out](https://www.surveymonkey.com/r/5DF6YZP).
 
---------------
+## Minicourse #2: <br>Start Teaching Statistics with R and RStudio
 
-# Minicourse #2: <br>Start Teaching Statistics with R and RStudio
+### Day 1: The Less Volume, More Creativity approach
 
-## Day 1: The Less Volume, More Creativity approach
-
-### Goals for the day
+#### Goals for the day
 
 * Consider what "Less Volume, More Creativity" looks like in your own
 courses
@@ -42,7 +56,7 @@ courses
 * Learn how to create (multivariate!) graphical and numerical summaries
 in R
 
-### Resources
+#### Resources
 
   * Opening Slides: [[HTML]](less-volume/less-volume-slides.html)
   [[Rmd]](less-volume/less-volume-slides.Rmd)
@@ -57,38 +71,40 @@ in R
   
     * Graphs with ggformula: <http://shiny.grinnell.edu/Tutorials/GraphsWithggformula/>
    
-## Day 2: R Markdown for Instructors and Students
+### Day 2: R Markdown for Instructors and Students
 
+#### Goals for the day
 
-### Goals for the day
+* Learn how students and instructors can make use of RMarkdown to create
+documents and webpages that include text, R code, R output, and graphics.
 
-### Resources
+* See the importance of a reproducible workflow.
+
+#### Resources
 
  * [Prezi by Nick Horton](https://prezi.com/vq6l5yqpnqma/intro-to-r-markdown-cvc-2015/)
- * [R Markdown Cheet Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
+ * [R Markdown Cheet Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)  
 
--------------
-  
-# Minicourse #12: <br>Keep Teaching Statistics with R and RStudio
+## Minicourse #12: <br>Keep Teaching Statistics with R and RStudio
 
-## Day 1: Data Wrangling with the tidyverse
+### Day 1: Data Wrangling with the tidyverse
 
-### Goals for the day
+#### Goals for the day
 
-### Resources
+#### Resources
 
  * Data Wrangling: <http://rsconnect.calvin.edu/wrangling-jmm2019>
     
     * has many uses, including preparing data for plotting
 
-## Day 2: Teaching Modeling with R
+### Day 2: Teaching Modeling with R
 
-### Goals for the day
+#### Goals for the day
 
-### Resources
+#### Resources
 
 
-# Additional Resources and Information
+## Additional Resources and Information
 
 <!-- ## R Studio Server -->
 
@@ -99,11 +115,21 @@ in R
 
 <!-- These accounts will likely be recycled in May or June, 2018. -->
 
-## Cheat Sheets
+### Cheat Sheets
 
 R Studio is assembling a number of useful cheat sheets at [www.rstudio.com/resources/cheatsheets/](https://www.rstudio.com/resources/cheatsheets/)
-   
-## Running R Locally
+
+### rstudio.cloud
+
+You (and your students) can set up accounts with <https://rstudio.cloud/>.
+This is the easiest way to get going with R since no one needs to install or 
+pay for anything.
+
+This online version of RStudio is a new service and still under development.
+Currently it is free.  Eventually there may be both free and paid plans.
+
+
+### Running R Locally
 
 You are welcome to work in your own local copy of R and RStudio if you prefer.  This will work best if you have a recent versions 
 
@@ -116,7 +142,7 @@ You are welcome to work in your own local copy of R and RStudio if you prefer.  
 Packages can be installed or updated using the Packages tab in RStudio.
 
 
-## Setting up your own RStudio Server  
+### Setting up your own RStudio Server  
 
  * If you ask, RStudio will provide you with the professional server for free for qualifying academic purposes.  Contact them for details to see if you qualify.
  
