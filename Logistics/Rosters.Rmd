@@ -1,0 +1,30 @@
+---
+title: "Rosters"
+author: "R Pruim"
+date: "1/9/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(readxl)
+library(dplyr)
+Rosters <-
+  read_excel("Rosters.xlsx", 1) %>% mutate(start = TRUE) %>%
+  full_join(
+    read_excel("Rosters.xlsx", 2) %>% mutate(keep = TRUE)
+  )
+library(printr)
+```
+
+## Folks registerd for both workshops
+
+```{r}
+Rosters %>% filter(start, keep)
+```
+
+## All email addresses
+
+```{r, comment = NA}
+cat(paste(Rosters$email), sep = "\n")
+```
