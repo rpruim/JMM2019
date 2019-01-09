@@ -1,0 +1,26 @@
+
+Dear Minicourse Participant,
+
+Shonda and I are looking forward to meeting you in Baltimore next week for one or both of the two minicourses we are co-leading:
+
+  * Start Teaching Statistics with R and RStudio (Wednesday and Thursday)
+  * Keep Teaching Statistics with R and RStudio (Friday and Saturday)
+
+We hope you will also take advantage of the sessions sponsored by the SIGMAA StatEd.  You can find those details on your program.
+
+As we prepare for our minicourses, we request that you fill out a brief survey to give us a bit of information about your background and the reasons you are interested in the minicourse.  You can find the survey here:
+
+  https://goo.gl/forms/RbTrIeJp51Z30Pku1
+
+No additional preparation is required, but be sure to bring a laptop that can access wireless internet.
+
+If you like, here are some additional things you may do in advance:
+
+  * Create an account at rstudio.cloud.  This will give you access to a cloud-based RStudio.
+
+  * If you want to have a locally installed version of R and RStudio on your computer, these are easy to install.  Just follow the directions at rstudio.com and cran.r-project.org.
+
+  * If you want to try things on a local version of R and RStudio (again, this is not required for the minicourse), you will also want to install a number of R packages including mosaic, learnr, rmarkdown, and tidyverse.  (In RStudio, this can be done from the packages tab.  A number of additional packages will be installed as well.) Installing these in advance will save the download delay during the minicourse.
+
+Thanks.
+
