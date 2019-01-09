@@ -50,9 +50,12 @@ in R
 
   * Intro Tutorial: <http://rsconnect.calvin.edu/less-volume-jmm2019>
   
-  * Refining `ggformula` plots: [rsconnect.calvin.edu/ggformula/refining/](http://rstudio.calvin.edu:3939/ggformula/refining/)
+  * In case you want to learn more about how to produce plots, here are some
+  additional tutorials
   
-    * In case you want to learn more about how to produce plots  
+    * Refining ggformula plots: <http://rsconnect.calvin.edu/ggformula/refining/>
+  
+    * Graphs with ggformula: <http://shiny.grinnell.edu/Tutorials/GraphsWithggformula/>
    
 ## Day 2: R Markdown for Instructors and Students
 
