@@ -71,15 +71,18 @@ in R
 
 #### Goals for the day
 
+* See the importance of a reproducible workflow.
+
 * Learn how students and instructors can make use of RMarkdown to create
 documents and webpages that include text, R code, R output, and graphics.
 
-* See the importance of a reproducible workflow.
-
 #### Resources
 
- * [Prezi by Nick Horton](https://prezi.com/vq6l5yqpnqma/intro-to-r-markdown-cvc-2015/)
+ * [Reprodicible Research and R Part1](http://rpubs.com/skuiper/reproducibility1)
+ * [Reprodicible Research and R Part2](http://rpubs.com/skuiper/reproducibility2)
  * [R Markdown Cheet Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)  
+ * [Prezi by Nick Horton](https://prezi.com/vq6l5yqpnqma/intro-to-r-markdown-cvc-2015/)
+ * [Clips from John Oliver's Discussion on p-Hacking](https://www.youtube.com/watch?v=FLNeWgs2n_Q)
 
 ## Minicourse #12: <br>Keep Teaching Statistics with R and RStudio
 
