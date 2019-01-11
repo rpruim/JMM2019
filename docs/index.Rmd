@@ -52,6 +52,8 @@ courses
 * Learn how to create (multivariate!) graphical and numerical summaries
 in R
 
+* Login to <https://rstudio.cloud>
+
 #### Resources
 
   * Opening Slides: [[HTML]](less-volume/less-volume-slides.html)
