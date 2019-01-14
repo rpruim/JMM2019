@@ -60,12 +60,16 @@ in R
   [[Rmd]](less-volume/less-volume-slides.Rmd)
   
 
-  * Intro Tutorial: <http://rsconnect.calvin.edu/less-volume-jmm2019>
+  * Intro Tutorial: 
+      * [at rsconnect.calvin.edu](http://rsconnect.calvin.edu/less-volume-jmm2019)
+      * [at shinyapps.io]()
   
   * In case you want to learn more about how to produce plots, here are some
   additional tutorials
   
-    * Refining ggformula plots: <http://rsconnect.calvin.edu/ggformula/refining/>
+    * Refining ggformula plots: 
+        * [at rsconnect.calvin.edu](http://rsconnect.calvin.edu/ggformula/refining/)
+        * [at shinyapps.io](https://rpruim.shinyapps.io/Refining_ggformula/)
   
     * Graphs with ggformula: <http://shiny.grinnell.edu/Tutorials/GraphsWithggformula/>
    
@@ -80,8 +84,8 @@ documents and webpages that include text, R code, R output, and graphics.
 
 #### Resources
 
- * [Reprodicible Research and R Part1](http://rpubs.com/skuiper/reproducibility1)
- * [Reprodicible Research and R Part2](http://rpubs.com/skuiper/reproducibility2)
+ * [Reprodicible Research and R, Part 1](http://rpubs.com/skuiper/reproducibility1)
+ * [Reprodicible Research and R, Part 2](http://rpubs.com/skuiper/reproducibility2)
  * [R Markdown Cheet Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)  
  * [Prezi by Nick Horton](https://prezi.com/vq6l5yqpnqma/intro-to-r-markdown-cvc-2015/)
  * [Clips from John Oliver's Discussion on p-Hacking](https://www.youtube.com/watch?v=FLNeWgs2n_Q)
