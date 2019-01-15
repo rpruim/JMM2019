@@ -259,7 +259,7 @@ describe the positional information of a plot.
 Formulas in R always involve the tilde character, which is easy to overlook.
 It looks like this:  
 
-```{r echo = FALSE, fig.align = "center"}
+```{r echo = FALSE, fig.align = "center", out.width = "50%"}
 knitr::include_graphics("../images/tilde.png")
 ```
 
@@ -399,7 +399,7 @@ The general form for these is `option = value`.
 For example, 
 
   * `spar = 0.5` (or any number between 0 and 1) controls the amount of smoothing in `gf_spline()`.
-  * `se = FALSE` (note capitalization) turns off the "error band" in `gf_smooth()`.
+  * `se = TRUE` (note capitalization) turns on an "error band" in `gf_lm()` or `gf_smooth()`.
   * `color = "red"` or `fill = "navy"` (note quotes) can be used to change the colors of things.  (`fill` is typically used for regions that are "filled in" and `color` for dots and lines.)
   * `alpha = 0.5` (or any number between 0 and 1) will set the opacity (0 is completely
   transparant and 1 is completely opaque).
@@ -419,7 +419,7 @@ gf_spline(births ~ date, data = Births1978,
 
 ```{r, gf-options-2, exercise = TRUE}
 gf_smooth(births ~ date, data = Births1978, 
-          se = FALSE, 
+          se = TRUE, 
           color = "red")
 ```
 
@@ -632,6 +632,8 @@ gf_violin(length ~ sex, data = KidsFeet) %>%
 ```{r, explore-more, exercise = TRUE}
 
 ```
+
+Did you make a cool plot?  Copy and paste it into this [Google presentation]().
 
 ## Where do we go from here?
 

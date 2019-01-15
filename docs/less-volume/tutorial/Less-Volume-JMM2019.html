@@ -281,7 +281,7 @@ name of data set
 <div id="section-formulas-in-r" class="section level3">
 <h3>Formulas in R</h3>
 <p>The most distinctive feature of <code>ggformula</code> plots is the use of formulas to describe the positional information of a plot. Formulas in R always involve the tilde character, which is easy to overlook. It looks like this:</p>
-<p><img src="../images/tilde.png" style="display: block; margin: auto;" /></p>
+<p><img src="../images/tilde.png" width="50%" style="display: block; margin: auto;" /></p>
 <p>The position of <img src="../images/tilde-small.png" /> on the keyboard varies from brand to brand. On Apple keyboards, it’s here.</p>
 <p><img src="../images/keyboard-tilde.png" width="40%" style="display: block; margin: auto;" /></p>
 <!-- #### Exercise -->
@@ -385,7 +385,7 @@ gf_density()</code></pre>
 <p>For example,</p>
 <ul>
 <li><code>spar = 0.5</code> (or any number between 0 and 1) controls the amount of smoothing in <code>gf_spline()</code>.</li>
-<li><code>se = FALSE</code> (note capitalization) turns off the “error band” in <code>gf_smooth()</code>.</li>
+<li><code>se = TRUE</code> (note capitalization) turns on an “error band” in <code>gf_lm()</code> or <code>gf_smooth()</code>.</li>
 <li><code>color = &quot;red&quot;</code> or <code>fill = &quot;navy&quot;</code> (note quotes) can be used to change the colors of things. (<code>fill</code> is typically used for regions that are “filled in” and <code>color</code> for dots and lines.)</li>
 <li><code>alpha = 0.5</code> (or any number between 0 and 1) will set the opacity (0 is completely transparant and 1 is completely opaque).</li>
 </ul>
@@ -400,7 +400,7 @@ gf_density()</code></pre>
 </div>
 <div class="tutorial-exercise" data-label="gf-options-2" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>gf_smooth(births ~ date, data = Births1978, 
-          se = FALSE, 
+          se = TRUE, 
           color = &quot;red&quot;)</code></pre>
 <script type="application/json" data-opts-chunk="1">{"fig.width":6,"fig.height":2.5,"fig.retina":2,"fig.align":"center","fig.keep":"high","fig.show":"asis","out.width":576,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
 </div>
@@ -472,27 +472,27 @@ gf_point(births ~ date, data = Births1988, color = &quot;skyblue&quot;)</code></
 <tr>
 <td>
 
-<div id="htmlwidget-f998bfbb37d720a6e7ec" style="width:100%;height:auto;", class = "quiz html-widget">
+<div id="htmlwidget-41b793c3ab362364504a" style="width:100%;height:auto;", class = "quiz html-widget">
 <div class="panel panel-default">
 <div class="panel-body quizArea">
 </div>
 </div>
 </div>
 
-<script type="application/json" data-for="htmlwidget-f998bfbb37d720a6e7ec">{"x":{"question":"Does it appear that the conjecture about weekends is generally correct?","answers":[{"option":"yes","correct":true,"message":null},{"option":"no","correct":false,"message":null}],"label":"color-mapping-quiz-1","skipStartButton":true,"perQuestionResponseAnswers":true,"perQuestionResponseMessaging":true,"preventUnanswered":true,"displayQuestionCount":false,"displayQuestionNumber":false,"disableRanking":true,"nextQuestionText":"","checkAnswerText":"Submit Answer","allowRetry":false,"randomSortAnswers":false,"json":{"info":{"name":"","main":""},"questions":[{"q":"Does it appear that the conjecture about weekends is generally correct?","a":[{"option":"yes","correct":true,"message":null},{"option":"no","correct":false,"message":null}],"correct":"Correct!","incorrect":"Incorrect."}]}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-41b793c3ab362364504a">{"x":{"question":"Does it appear that the conjecture about weekends is generally correct?","answers":[{"option":"yes","correct":true,"message":null},{"option":"no","correct":false,"message":null}],"label":"color-mapping-quiz-1","skipStartButton":true,"perQuestionResponseAnswers":true,"perQuestionResponseMessaging":true,"preventUnanswered":true,"displayQuestionCount":false,"displayQuestionNumber":false,"disableRanking":true,"nextQuestionText":"","checkAnswerText":"Submit Answer","allowRetry":false,"randomSortAnswers":false,"json":{"info":{"name":"","main":""},"questions":[{"q":"Does it appear that the conjecture about weekends is generally correct?","a":[{"option":"yes","correct":true,"message":null},{"option":"no","correct":false,"message":null}],"correct":"Correct!","incorrect":"Incorrect."}]}},"evals":[],"jsHooks":[]}</script>
 </td>
 </tr>
 <tr>
 <td>
 
-<div id="htmlwidget-0b056cb6b14810518a2c" style="width:100%;height:auto;", class = "quiz html-widget">
+<div id="htmlwidget-fa95cd07668817b02e5f" style="width:100%;height:auto;", class = "quiz html-widget">
 <div class="panel panel-default">
 <div class="panel-body quizArea">
 </div>
 </div>
 </div>
 
-<script type="application/json" data-for="htmlwidget-0b056cb6b14810518a2c">{"x":{"question":"What happens if you omit the <code>~<\/code> before <code>~wday<\/code>?","answers":[{"option":"It works just the same.  The tilde isn&#39;t required.","correct":false,"message":null},{"option":"All the dots are the same color.","correct":false,"message":null},{"option":"There is an error message: &#39;wday&#39; not found.","correct":true,"message":null}],"label":"color-mapping-quiz-2","skipStartButton":true,"perQuestionResponseAnswers":true,"perQuestionResponseMessaging":true,"preventUnanswered":true,"displayQuestionCount":false,"displayQuestionNumber":false,"disableRanking":true,"nextQuestionText":"","checkAnswerText":"Submit Answer","allowRetry":false,"randomSortAnswers":false,"json":{"info":{"name":"","main":""},"questions":[{"q":"What happens if you omit the <code>~<\/code> before <code>~wday<\/code>?","a":[{"option":"It works just the same.  The tilde isn&#39;t required.","correct":false,"message":null},{"option":"All the dots are the same color.","correct":false,"message":null},{"option":"There is an error message: &#39;wday&#39; not found.","correct":true,"message":null}],"correct":"Correct!","incorrect":"Incorrect."}]}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-fa95cd07668817b02e5f">{"x":{"question":"What happens if you omit the <code>~<\/code> before <code>~wday<\/code>?","answers":[{"option":"It works just the same.  The tilde isn&#39;t required.","correct":false,"message":null},{"option":"All the dots are the same color.","correct":false,"message":null},{"option":"There is an error message: &#39;wday&#39; not found.","correct":true,"message":null}],"label":"color-mapping-quiz-2","skipStartButton":true,"perQuestionResponseAnswers":true,"perQuestionResponseMessaging":true,"preventUnanswered":true,"displayQuestionCount":false,"displayQuestionNumber":false,"disableRanking":true,"nextQuestionText":"","checkAnswerText":"Submit Answer","allowRetry":false,"randomSortAnswers":false,"json":{"info":{"name":"","main":""},"questions":[{"q":"What happens if you omit the <code>~<\/code> before <code>~wday<\/code>?","a":[{"option":"It works just the same.  The tilde isn&#39;t required.","correct":false,"message":null},{"option":"All the dots are the same color.","correct":false,"message":null},{"option":"There is an error message: &#39;wday&#39; not found.","correct":true,"message":null}],"correct":"Correct!","incorrect":"Incorrect."}]}},"evals":[],"jsHooks":[]}</script>
 </td>
 </tr>
 </table>
@@ -597,6 +597,7 @@ gf_violin(length ~ sex, data = KidsFeet) %&gt;%
 <div class="tutorial-exercise" data-label="explore-more" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <script type="application/json" data-opts-chunk="1">{"fig.width":6,"fig.height":2.5,"fig.retina":2,"fig.align":"center","fig.keep":"high","fig.show":"asis","out.width":576,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
 </div>
+<p>Did you make a cool plot? Copy and paste it into this <a href="">Google presentation</a>.</p>
 </div>
 </div>
 <div id="section-where-do-we-go-from-here" class="section level2">
