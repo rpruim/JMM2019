@@ -56,6 +56,8 @@ in R
 
 #### Resources
 
+  * [Welcome Slides](welcome/JMM2019-welcome.html)
+  
   * Opening Slides: [[HTML]](less-volume/less-volume-slides.html)
   [[Rmd]](less-volume/less-volume-slides.Rmd)
   
