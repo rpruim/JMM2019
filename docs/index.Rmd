@@ -88,6 +88,8 @@ documents and webpages that include text, R code, R output, and graphics.
  * [Reprodicible Research and R, Part 2](http://rpubs.com/skuiper/reproducibility2)
  * [R Markdown Cheet Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)  
  * [Prezi by Nick Horton](https://prezi.com/vq6l5yqpnqma/intro-to-r-markdown-cvc-2015/)
+ * Once you have an Rstudio.cloud account, copy this project: <https://rstudio.cloud/project/170774>
+     * There are two Rmd files, make sure you complete the first before attempting part2.
  * [Clips from John Oliver's Discussion on p-Hacking](https://www.youtube.com/watch?v=FLNeWgs2n_Q)
 
 ## Minicourse #12: <br>Keep Teaching Statistics with R and RStudio
@@ -107,6 +109,11 @@ documents and webpages that include text, R code, R output, and graphics.
 #### Goals for the day
 
 #### Resources
+
+* [Teaching Statistics with R](http://rpubs.com/skuiper/TeachStats1)
+* An Rstudio.cloud project on creating maps <https://rstudio.cloud/spaces/8645/join?access_code=EU8AYhXB7vmNhHEToFUJLr9Fc6%2Fznnn%2Bb%2FdsBi%2Bo>
+* Student activities, apps, datasets and code for the NYPD stop and frisk data: <http://web.grinnell.edu/individuals/kuipers/stat2labs/NYPD.html>
+* Multiple tutorials and projects (case studies) on using R: <http://web.grinnell.edu/individuals/kuipers/stat2labs/RTutorials.html>  These include tidy data, visualizations, working with text files, working with dates and times, and making maps.
 
 
 ## Additional Resources and Information
