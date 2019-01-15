@@ -114,6 +114,7 @@ gf_histogram( ~ time, data = S, boundary = min(S$time),
   gf_vline(xintercept = d2, color = "red", size = 1.5, alpha = 0.6) %>% 
   gf_labs(x = "survey submission time (EST)")
 ```
+
 # Presenters/Facilitators
 
 ## Shonda Kuiper, Grinnel College
