@@ -24,10 +24,19 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### This document is located at http://rpruim.github.io/JMM2019/
 
+* We will update it throughout the week (and perhaps for a short time after).
+* Bookmore the page so you can get back to it as needed.
+
 ### Presenters/Organizers: 
 
-  * Randall Pruim (Calvin College)
-  * Shonda Kuiper (Grinnel College)
+* Randall Pruim (Calvin College)
+* Shonda Kuiper (Grinnel College)
+
+With special thanks to our "shoulder surfers": 
+
+* Joyce Chew (Calvin College)
+* Tracey Ramirez (Cal State Monterey Bay)
+ 
 
 ### Wifi
 
