@@ -72,7 +72,7 @@ options(digits = 3)
 ## Mike McCarthy
 
 <table><tr align="top" padding=5><td width="20%" align="top">
-<img src="images/MikeMcCarthy.jpg" align="top" width="150"></td>
+<img src="../images/MikeMcCarthy.jpg" align="top" width="150"></td>
 <td align="top"> 
 (former) Head coach, Green Bay Packers (NFL Football)
 
@@ -86,7 +86,7 @@ options(digits = 3)
 ## Mike McCarthy
 
 <table><tr align="top" cellpadding=5><td width="20%" align="top">
-<img src="images/MikeMcCarthy.jpg" align="top" width="150"></td>
+<img src="../images/MikeMcCarthy.jpg" align="top" width="150"></td>
 <td align="top"> 
 (former) Head coach, Green Bay Packers (NFL Football)
 
@@ -104,7 +104,7 @@ options(digits = 3)
 ## Mike McCarthy
 
 <table><tr align="top" padding=5><td width="20%" align="top">
-<img src="images/MikeMcCarthy.jpg" align="top" width="150"></td>
+<img src="../images/MikeMcCarthy.jpg" align="top" width="150"></td>
 <td align="top"> 
 (former) Head coach, Green Bay Packers (NFL Football)
 
@@ -124,7 +124,7 @@ options(digits = 3)
 ## Mike McCarthy
 
 <table><tr align="top" padding=5><td width="20%" align="top">
-<img src="images/MikeMcCarthy.jpg" align="top" width="150"></td>
+<img src="../images/MikeMcCarthy.jpg" align="top" width="150"></td>
 <td align="top"> 
 (former) Head coach, Green Bay Packers (NFL Football)
 
@@ -193,7 +193,7 @@ is the most limited resource most of our projects have.
 
 
 <center>
-<img width = "40%" align = "center" src="images/brain-is-full.jpg">
+<img width = "40%" align = "center" src="../images/brain-is-full.jpg">
 </center>
 
 ## Less Volume, More Creativity 
@@ -215,7 +215,7 @@ Perfection is achieved, not when there is nothing more to add, but when there is
 --- Antoine de Saint-Exupery (writer, poet, pioneering aviator)
 </td>
 <td width="20%"> 
-<img src="images/SaintExupery.jpg">
+<img src="../images/SaintExupery.jpg">
 </tr>
 </table>
 
