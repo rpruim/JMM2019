@@ -43,8 +43,7 @@ Be sure to load these packages *in your R Markdown document*.
 library(ggformula)  # for plots
 library(mosaic)     # for numerical summaries
 library(readr)      # to load data from csv
-library(corrplot)   # for correlation plots
-library(GGally)     # for another type of correlation plot
+library(GGally)     # for graphical comparisions of pairs of variables
 ```
 
 ## Loading the data
@@ -74,8 +73,6 @@ gf_density(~ Age, data = Tiger1, color = ~ Sex, fill = ~ Sex)
 
 ```{r, fig.width = 6, fig.height = 6, message = FALSE }
 TigerCont <- select(Tiger1, Age, Weight, NoseBlack, Paw, Length)
-#M <- cor(TigerCont)
-#p <- corrplot(M, method = "ellipse")
 ggpairs(TigerCont)
 ggpairs(Tiger1)
 ```
@@ -248,4 +245,65 @@ author's use in their model?
 6. How precisely would you expect to predict ages of lion's based on the model in
 the article?  How could you improve the precision of the model?  
 
+
+## 7. How to build a model
+
+Building a model is both a science and an art, and there is no substitute for 
+experience.  But beginners need some guidelines to help them develop experiences
+more efficiently.  Suppose we are modeling how $y$ depends on some potential
+predictors $x_1, x_2, \dots$.
+
+### Is there theory to support a particular model?
+
+Sometimes we have good theoretical reasons to expect (or at least wonder about)
+a particular type of relationship.  If so, we should let that guide our model
+building.
+
+When we are less informed by a particular theory, we can answer the following
+questions to help guide us toward a model.
+
+### Should I include a constant term (intercept) in the model?
+
+Usually the answer to this is yes.  Certainly it is a good place to start.
+It is a pretty strong (and often clearly false) assumption that the response
+variable should be zero when all the predictors are 0.
+
+### Should I include (a transformation of) $x_i$ in the model?
+
+If it seems like $y$ might depend on $x_i$, then $x_i$ is a candidate for 
+inclusion.  [A tranformation of a variable $x_i$ is just another variable, 
+so it isn't really a special case.  But often transformed versions of the 
+"natural" or "available" variables improves the model.]
+
+### Should I include $x_i^2$ (quadratic term) in the model?
+
+The main purpose of a quadratic term is not turn a line into a curve (transformations also do that) but to turn a monotonic function into a function
+with an optimum.  If we expect that there is a value of $x_i$ that makes 
+$y$ largest (or smallest), we should consider including a quadratic term.
+
+### Should I include $x_i x_j$ (interaction term) in the model?
+
+If how why depends on $x_i$ depends on the value of $x_j$, then an interaction
+term is warranted.  In particular, if we have used $x_i^2$ and the value of 
+$x_i$ that makes $y$ largest (or smallest) depends on $x_j$, then we should 
+include an interaction term.
+
+### Example
+
+How does the speed at which a bicyclist can ride a bicycle depend on
+
+  * gear ratio ($g$)
+  * steepness of the road ($s$)
+  
+Both variables seem likely to affect the speed, so we include $g$ and $s$ (and an intercept) in the model.
+
+If the gear ratio is too high or too low, the bicyclist cannot go as fast, so we 
+should include a quadratic term for $g$.  For any steepness, their is an optimal gear ratio.
+
+Furthermore, the optimal gear ratio depends on the steepness (that's we we make
+bicycles with multiple gear ratios).  So we should include an interaction term.
+
+But we don't need a quadratic term for $s$ since the speed is monotonic in 
+steepness.  (If it were not, as hill got steeper and steeper, we would go slower 
+and slower... until they got really steep, when we would start going faster again.)
 
