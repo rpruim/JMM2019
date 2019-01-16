@@ -192,19 +192,20 @@ it must be used efficiently and elegantly because human brain power
 is the most limited resource most of our projects have.
 
 
-<center>
-<img width = "40%" align = "center" src="../images/brain-is-full.jpg">
-</center>
+
+```{r echo = FALSE, out.width = "50%", fig.align = "center"}
+knitr::include_graphics("../images/brain-is-full.jpg")
+```
 
 ## Less Volume, More Creativity 
 
 ### Some propopsed solutions
 
- * `mosaic` and `ggformula` -- making the most of formulas
+ * `mosaic` and `ggformula` -- making the most of formulas [Day 1]
  
- * `tidyverse` -- grammar of data transformation
+ * `tidyverse` -- grammar of data transformation [Day 3]
  
- * R Markdown -- document creation for humans who use R
+ * **R Markdown** -- document creation for humans who use R [Day 2]
  
 
 <table>
@@ -248,7 +249,7 @@ stress) if you follow a Less Volume, More Creativity approach.
   
 **Day 2**
   
-* An introduction to RStudio (via <rstudio.cloud>)
+* An introduction to RStudio (via **rstudio.cloud**)
 
 * R Markdown: an intelligent way to create documents with text and R
   
