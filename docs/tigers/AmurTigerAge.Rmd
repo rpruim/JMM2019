@@ -51,7 +51,7 @@ library(GGally)     # for another type of correlation plot
 
 
 ```{r}
-Tiger1 <- read_csv("data/TigerData2.csv")   # Reads the data 
+Tiger1 <- read_csv("data/TigerData1.csv")   # Reads the data 
 head(Tiger1, 5)   
 ```
 
@@ -74,15 +74,26 @@ gf_density(~ Age, data = Tiger1, color = ~ Sex, fill = ~ Sex)
 
 ```{r, fig.width = 6, fig.height = 6, message = FALSE }
 TigerCont <- select(Tiger1, Age, Weight, NoseBlack, Paw, Length)
-M <- cor(TigerCont)
-p <- corrplot(M, method = "ellipse")
+#M <- cor(TigerCont)
+#p <- corrplot(M, method = "ellipse")
 ggpairs(TigerCont)
 ggpairs(Tiger1)
 ```
 
+Are the three size variables (Length, Paw, and Weight) highly correlated? What appears to be the best predictor of Age?
+
 ```{r}
 gf_point(Age ~ Weight, data = Tiger1, color = ~ Sex) %>%
 gf_lm()
+
+gf_point(Weight~Length, data = Tiger1, color = ~ Sex) %>%
+  gf_density2d(Weight~Length, data = Tiger1) %>%
+  gf_facet_wrap(~ Region)
+
+gf_jitter(Age ~ Region, color = ~ Sex, data = Tiger1,
+          width = 0.1, height = 0) %>%
+  gf_line(Age ~ Region, color = ~ Sex, data = Tiger1,
+          group = ~ Sex, stat="summary") 
 ```
 
 
@@ -139,18 +150,58 @@ Based on the results and observations made in Section 2, you likely noticed that
 
 You may have noticed that in the previous graphs that measures of size (Length, Paw, and Weight) are very helpful for predicting a tigers age when they are young (such as less than 3 years old), but these variables are not very useful when a tiger is older.
 
-Are the three size variables (Length, Paw, and Weight) highly correlated?
+Let use a simple linear regression model to predict Age based upon Weight.
 
-Is there an important interaction term between Sex and any of the size variables when predicting age?
+```{r}
+Tiger.lm = lm(Age ~ Weight, data = Tiger1)  # Creating a simple linear model
+Tiger.lm
 
-What is the best predictor of Age? 
+summary(Tiger.lm)        # Summary of results
+anova(Tiger.lm)          # ANOVA table is also useful
 
-Use a simple linear regression model to predict Age based upon NoseBlack
+resid1 <- Tiger.lm$res   # Create a vector of residuals from the Tiger.lm model
 
-Look at the residual plots. Is a data transformation useful.  [In fact this type of data is almost always slightly improved by the arcsine transformation. It is very difficulty to see in the smaller Tiger1 sample, but is a little more obvious with the larger Tiger2 sample.You see it if you collect lots of older tigers, but they are rare in the population.]
+#It is often helpful to attach the residuals and fitted values to the data frame.
+TigerModel = mutate(Tiger1, resid1, fits1 = Tiger.lm$fitted.values)
+head(TigerModel)          # show the first rows of the TigerModel data frame
 
-Is there a benefit to adding additional terms to the model?
-[If you want to predict size, Sex may be important, but most additional terms only slightly improve the model]
+# Create a scatterplot with fitted line
+gf_point(Age ~ Weight, data = TigerModel)%>%
+  gf_line(fits1~Weight)
+
+# Create a residual plot
+gf_point(resid1 ~ Weight, data = TigerModel)%>%
+  gf_hline(yintercept = 0)
+```
+
+** Questions**
+
+* Is the model a good fit?
+* What does the p-value tell us about the relationship between Weight and Age?
+* What does the $R^2$ Value tell us about the relationship between Weight and Age?
+
+Based upon an earlier scatterplot, we may want to ask whether there is an important interaction term between Sex and Weight variables when predicting age? 
+
+```{r}
+Tiger2.lm = lm(Age ~ Weight * Sex, data = Tiger1)
+summary(Tiger2.lm)
+anova(Tiger2.lm)
+
+TigerModel <- mutate(TigerModel, resid2 = Tiger2.lm$residuals, fits2 = Tiger2.lm$fitted.values)
+
+gf_point(Age ~ Weight, data = TigerModel, color = ~ Sex)%>%
+  gf_line(fits2~Weight)
+```
+
+** Questions**
+
+* Create a third model with corresponding graphs, `Tiger3.lm = lm(Age ~ Weight + Sex, data = Tiger1)`. What is the difference between `Weight*Sex` and `Weight + Sex`? 
+* Which of the three models would you suggest? Why?
+* Notice in all three models, the variance of the residuals increase as the Weight increases. This suggests using a **Variance Stabalizing Transformation**, such as the `sqrt(Age)` or the `log(Age)`. In your three models above, replace `Age` with `log(Age)`.
+* Look at the residual plots. Was the data transformation useful?  
+* Based upon the six models you created, which would you suggest using? Explain your answer.
+* Notice that the p-value for Sex tends to change when different models are used? After creating and evaluating all six models, is the variable `Sex` important in predicting Age? Explain your answer.
+* Based upon our initial graphs in Section 2, suggest a new regression model that you believe may better predict Age.
 
 
 ## 4. Reproducibility
@@ -164,7 +215,7 @@ Play the tutorial for the TigerSAMPLING game briefly so you are familiar with th
 
 To collect your own data, go to <http://statgames.tietronix.com/TigerSampling/>  and enter a PlayerName and GroupName (The "PlayerName" is not your personal name, just any combination of letters and numbers with no spaces). Use the GroupName JMM2019.  Select `Load Mission 1` and then `DataSet1`. Use the Full Screen option to see the entire game on your computer screen. If you forget commands anytime during game play, you can hit the "p" key to pause the game and see game instructions. This will allow you to review all the controls, exit the game and save your data.
 
-Questions to consider related to collecting data:  
+**Questions to consider related to collecting data** 
 
 1. What are some important characteristics of the tiger sample you collect to build a model for
 age?  What are some problems that could impact the quality of data collected on tigers?
@@ -180,7 +231,7 @@ Before conducting this analysis students can read an optional paper discussing c
 
 In this article, the subscript in Table 1 states, "Predicted values are based upon the least-squares regression of a truncated data set for 63 known-aged females in the Serengeti and Ngorongoro aged $\leq$ 10 yr (Age  = 2.0667 + 5.9037arcsin(NoseBlack); $r^2 = 0.75$, $p \leq 0.0001$)." 
 
-### Questions to consider related to the above articles:  
+**Questions to consider related to the above articles**  
 
 1. Why is estimating the age of a lion a worthwhile question?  Is this also true for
 tigers?
