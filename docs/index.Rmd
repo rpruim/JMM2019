@@ -54,17 +54,42 @@ in R
 
 * Login to <https://rstudio.cloud>
 
-#### Resources
+#### Welcome
 
   * [Welcome Slides](welcome/JMM2019-welcome.html)
-  
-  * Opening Slides: [[HTML]](less-volume/less-volume-slides.html)
-  [[Rmd]](less-volume/less-volume-slides.Rmd)
-  
 
-  * Intro Tutorial: 
-      * [at rsconnect.calvin.edu](http://rsconnect.calvin.edu/less-volume-jmm2019)
-      * [at shinyapps.io]()
+#### Less Volume, More Creativity
+
+  * Slides
+      * [[HTML]](less-volume/less-volume-slides.html)
+      * [[Rmd]](less-volume/less-volume-slides.Rmd)
+  
+  * Tutorial 
+      * [at rsconnect.calvin.edu](http://rsconnect.calvin.edu/less-volume/jmm2019)
+      * [at shinyapps.io](https://rpruim.shinyapps.io/Less-Volume-JMM2019/)
+      * [Google presentation with example plots](https://docs.google.com/presentation/d/11w4jK-PLc_v7Sm0gNcj5mAyHA8uyDWU7VTlYBjN9oks/edit?usp=sharing).
+
+#### rstudio.cloud
+
+[rstudio.cloud](https://rstudio.cloud) provides access to an online version of RStudio.
+
+* Free version has some limitations, but is enough to get you started
+    
+* Create and account at <https://login.rstudio.cloud/login>
+    
+* Click on [this project link](https://rstudio.cloud/project/172687) to get started.
+    
+    * Note: It can take a few minutes to create a new project.  Be patient.
+        
+    * Once you are there, trying creating a plot by typing a command in the 
+        "console".
+        
+    * If you want to save your work, be sure to save a copy.
+        
+    * We'll learn more about how to use rstudio.cloud tomorrow.
+        
+       
+#### Additional Resources
   
   * In case you want to learn more about how to produce plots, here are some
   additional tutorials
@@ -74,7 +99,7 @@ in R
         * [at shinyapps.io](https://rpruim.shinyapps.io/Refining_ggformula/)
   
     * Graphs with ggformula: <http://shiny.grinnell.edu/Tutorials/GraphsWithggformula/>
-   
+    
 ### Day 2: R Markdown for Instructors and Students
 
 #### Goals for the day
