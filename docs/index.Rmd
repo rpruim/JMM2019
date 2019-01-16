@@ -168,6 +168,38 @@ documents and webpages that include text, R code, R output, and graphics.
 
 R Studio is assembling a number of useful cheat sheets at [www.rstudio.com/resources/cheatsheets/](https://www.rstudio.com/resources/cheatsheets/)
 
+### StatPREP
+
+URL: <http://statprep.org/>
+
+#### Regional Workshops
+StatPREP will host four regional workshops in summer 2019 focused on helping
+faculty learn to teach modern methods of data analytics in introductory
+statistics courses. 
+
+These workshops are open to any faculty member teaching post-secondary intro
+stats over the next academic year. There is no registration fee for the workshop
+and all workshop expenses are covered through support from the National Science
+Foundation. Funds up to $100 are available for each participant to offset local
+travel expenses.
+
+* University of Hartford, Hartford, CT, May 31-June 1, 2019
+* Howard Community College, greater DMV area, Washington, D.C, June 7-8, 2019
+* Tarrant County College, Fort Worth, TX, June 14-15, 2019
+* Highline College, Seattle/Tacoma, WA, June 21-22, 2019
+
+#### Project Summary
+
+StatPREP will foster the widespread use of data-centered methods and pedagogies
+in introductory statistics courses. This will in turn enhance the preparation of
+students to meet the demands of a data-driven workplace and to use the newly
+available resources in our data-centric world. StatPREP will work directly with
+college-level instructors, both online and in community-based workshops, to
+develop the understanding and skills needed to work and teach with modern data.
+
+StatPREP will initiate community transformation focused on modernizing undergraduate statistics education. This project will offer an extended professional development program for mathematics faculty, particularly at two-year institutions, who teach introductory statistics, it will establish regional communities of practice to support these instructors, and it will provide them a national online support network with statistics education experts. This project also contributes to the goal to “improve STEM learning and learning environments by investigating the effectiveness of this professional development model as a catalyst for community transformation. The combined resources and reach of the MAA, ASA, and AMATYC will ensure the sustainability of StatPREP and the availability of this program to the largest possible audience.
+
+
 ### rstudio.cloud
 
 You (and your students) can set up accounts with <https://rstudio.cloud/>.
