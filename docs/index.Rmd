@@ -27,6 +27,11 @@ knitr::opts_chunk$set(echo = TRUE)
 * We will update it throughout the week (and perhaps for a short time after).
 * Bookmore the page so you can get back to it as needed.
 
+### Wifi
+
+  * network: Hiltonmtg
+  * password: Stat2019
+  
 ### Presenters/Organizers: 
 
 * Randall Pruim (Calvin College)
@@ -38,10 +43,6 @@ With special thanks to our "shoulder surfers":
 * Tracey Ramirez (Cal State Monterey Bay)
  
 
-### Wifi
-
-  * network: 
-  * password: 
   
 ### Feedback 
 
