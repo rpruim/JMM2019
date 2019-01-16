@@ -633,7 +633,10 @@ gf_violin(length ~ sex, data = KidsFeet) %>%
 
 ```
 
-Did you make a cool plot?  Copy and paste it into this [Google presentation]().
+#### Time to show off a little
+
+Did you make a cool plot?  
+Copy and paste it into this [Google presentation](https://docs.google.com/presentation/d/11w4jK-PLc_v7Sm0gNcj5mAyHA8uyDWU7VTlYBjN9oks/edit?usp=sharing).
 
 ## Where do we go from here?
 
@@ -770,7 +773,7 @@ Our one template gets us a lot: graphical summaries, numerical summaries, and mo
 </h2></center>
 &nbsp;
 
-Here is justa sample of things we can do with this template.
+Here is just a sample of things we can do with this template.
 
 ```{r, one-var, exercise = TRUE}
 gf_histogram( ~ age, data = HELPrct)
