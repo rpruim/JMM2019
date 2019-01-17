@@ -1,4 +1,7 @@
 library(ggformula)
 library(mosaic)
-library(mosaicData)
-library(NHANES)
+library(ggformula)
+library(ggplot2movies)  # gets us movies dataset
+library(babynames)
+library(nycflights13)
+library(lubridate)
