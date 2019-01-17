@@ -1,0 +1,115 @@
+---
+title: "Introduction to RMarkdown files"
+author: "Shonda Kuiper"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Modifying Text with R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks. 
+
+**Your Turn**
+
+* Before creating any code, **Knit** this document, then type a few sentences in the space below and **Knit** the document a second time. The R Markdown Cheat Sheet <http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf> provides many examples on how to modify text. Try formatting text to:
+
+1. add a header,
+2. put text in *italics* or **bold**, and
+3. create a list of items.
+
+
+
+
+
+
+
+
+
+
+
+## Embedding Code into an R Markdown File
+
+In an R Markdown file, you embed an R code chunk like this:
+
+```{r }
+# Anything between ```{r} and ``` in an R Markdown file, will run as code, unless the line starts with a #.
+```
+
+
+In the code below we 1) identify any R packages that are needed then 2) read in a dataset named Weather.
+
+```{r, message = FALSE, warning = FALSE}
+library(ggformula)  # A package to create graphs
+library(mosaic)     # A package for introductory statistics calculations
+library(readr)      # A package to read data
+
+Weather <- read_csv("data/Weather.csv")   # Reads the data 
+head(Weather, 5)                         # Shows the first 5 rows of the data 
+```
+
+
+**Your Turn**
+
+* Notice in the R Markdown file, we included `{r, message = FALSE}` instead of simply using `{r}`. This stops automated messages being printed in the knitted file. Knit this file with and without `message = FALSE`. How does the knitted HTML change without this code?
+
+* Go to the Markdown Cheat Sheet <http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf> and identify other `Embed code with knitr syntax`. How does the knitted file change when we add the `echo = FALSE` parameter to the code chunk? Note that each command needs to be separated by a comma, for example, ` {r, message = FALSE, echo = TRUE`}
+
+* Other commands can be used instead of the `head()` command. In the R chuck above, try `str(Weather)`, `nrow(Weather)`, `ncol(Weather)` and `dim(Weather)`.
+
+* The green arrow at the upper right corner of the R chuck will immediately run the code within the R Markdown file. It is often beneficial to use the down arrow to run all previous chunks of code before you run the current chunk.
+
+## Important R Markdown Concepts
+
+#### Installing Packages
+
+Many useful functions are available in R packages. For example, functions such as `gf_point` or `gf_line` are used to create graphs within the `ggformula` package. It is important to note that using a package in R requires two steps: 
+
+1) In the R Console, after the `>` you need to install a package one time. For example `install.packages("ggformula")`. The quotes are needed around the package name.
+
+2) Every time you start an R session or create an R Markdown file, you will need to require the package, using the code `library(ggformla)`.
+
+
+When you first install R, a set of core packages known as `base R` are automatically installed. This also includes several datasets. There are over 13,000 R packages, you only need to install the packages you want to use.
+
+Whenever `> install.packages("")` is used, the most recent version of the package is installed. Functions may act differently depending on the version of the package that you are using.
+
+
+#### Common Pitfalls
+
+There are several errors that are commonly made with R Markdown files. Here are a few things to keep in mind:
+
+* Stay aware of your workspace. The R Markdown file is separate from your console. Each knitted R Markdownfile, runs in a new workspace that does not have access to any of the data or code in other knitted files or the console. For example, even though you have knitted this R Markdown file with the Weather dataset, the command line `>` console has not recognized these commands. If you want to analyze the Weather dataset in the console, you will also need to read the data into the console. 
+
+* Syntax is very important in R. Pay close attention to capitalization, commas, paretheses and quotes.
+
+* It can be difficult to understand errors or failures when knitting a document. It is helpful to note the line number where the error occurs in the `R Markdown` tab of the console. 
+
+* It can be helpful to better understand some functions by typing `> ?functionname`. For example, you can type `> ?dim` , `> ??dim` , or `> example(dim)` in the console for more information and examples on how to use certain functions. Some packages have better documentation for their functions than others.
+
+* It is important to keep track of the working directories when reading in data files. This R Mardown document is in a Project (you can think of this somewhat as a folder) called `Intro_To_RMarkdown`. To read in the data we need to know what `Project` we are in and how to navigate to the data file. Notice when we read in the data, we started in the project folder, then went to a subfolder called data to get the data. You can use `> getwd()` or `> setwd()` in the console to nagivate to the correct working directories. In addition you can use the `Import Dataset` button in the Environment tab to navigate to any dataset in any of the folders or files that are in your project. After using the `Import Dataset` button, the complete path used to locate the file will appear in the console.
+
+* In Rstudio.cloud, you create additional folders to any project by selecting the `New Folder` button in the `Files` tab.  Use the `Upload` button in the `Files` tab to load any files from your desktop onto you Rstudio.cloud account.
+
+
+## Including Statistical Analysis and Graphs
+
+Now that we have a basic understanding of R Markdown files, lets start analysing the data. The Weather data contains the 2016 and 2017 Weather data for several cities. More details on this data can be found in the [Mosaic Data Documentation](ftp://cran.r-project.org/pub/R/web/packages/mosaicData/mosaicData.pdf).
+
+```{r}
+names(Weather)
+gf_line(avg_temp ~ date, data = Weather)%>%
+  gf_facet_grid(city ~ .)
+```
+
+
+**Your Turn**
+
+* In the space below insert a new R chunk (you can use the `Insert` button), create a new graph using the `Weather` data, then write one or two sentences describing your graph. You can use our previous tutorial on [Refining ggformula](https://rpruim.shinyapps.io/Refining_ggformula/#section-glyphs-that-use-more-than-two-positions) for ideas.
