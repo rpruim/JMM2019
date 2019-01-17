@@ -100,6 +100,8 @@ in R
         
        
 #### Additional Resources
+ 
+  * [mosaic cheat sheet](https://github.com/mlaviolet/Mosaic-cheatsheets/raw/master/mosaic-cheatsheet-gf.pdf) 
   
   * In case you want to learn more about how to produce plots, here are some
   additional tutorials
@@ -166,7 +168,17 @@ documents and webpages that include text, R code, R output, and graphics.
 
 ### Cheat Sheets
 
-R Studio is assembling a number of useful cheat sheets at [www.rstudio.com/resources/cheatsheets/](https://www.rstudio.com/resources/cheatsheets/)
+R Studio is assembling a number of useful cheat sheets at [www.rstudio.com/resources/cheatsheets/](https://www.rstudio.com/resources/cheatsheets/).  Among many others, are these
+
+* [mosaic cheat sheet](https://github.com/mlaviolet/Mosaic-cheatsheets/raw/master/mosaic-cheatsheet-gf.pdf) 
+
+* [RMarkdown cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
+
+* [Data Transformation cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)
+
+* [RStudio cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf)
+
+
 
 ### StatPREP
 
