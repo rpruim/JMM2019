@@ -136,9 +136,14 @@ documents and webpages that include text, R code, R output, and graphics.
 
 #### Resources
 
- * Example Rmd files:
-    * <IntroToRMarkdown/IntroductionToRMD_P1.Rmd>
-    * <IntroToRMarkdown/IntroductionToRMD_P2.Rmd>
+* Example Rmd files:
+    * [IntroToRMarkdown/IntroductionToRMD_P1.Rmd](IntroToRMarkdown/IntroductionToRMD_P1.Rmd)
+    * [IntroToRMarkdown/IntroductionToRMD_P2.Rmd](IntroToRMarkdown/IntroductionToRMD_P2.Rmd)
+    * [Coffee.csv](IntroToRMarkdown/data/Coffee.csv)
+    * [Weather.csv](IntroToRMarkdown/data/Weather.csv)
+    * [CoffeeTruck.csv](IntroToRMarkdown/data/CoffeeTruck.csv)
+    * [CoffeeTruck2.csv](IntroToRMarkdown/data/CoffeeTruck2.csv)
+    * [CoffeeTruckInteractions.csv](IntroToRMarkdown/data/CoffeeTruckInteractoins.csv)
 
  * [Reprodicible Research and R, Part 1](http://rpubs.com/skuiper/reproducibility1)
  * [Reprodicible Research and R, Part 2](http://rpubs.com/skuiper/reproducibility2)
