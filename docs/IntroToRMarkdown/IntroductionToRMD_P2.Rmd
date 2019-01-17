@@ -1,5 +1,5 @@
 ---
-title: "Introduction to RMarkdown files_Part2"
+title: "Introduction to RMarkdown Files_Part2"
 author: "Shonda Kuiper"
 output:
   html_document: default
@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## 1. Introduction
 
-This is Part 2 of an introduction to R Markdown. In this document, you will be asked to read and analyze several datasets using data from the [Statistically Grounded Game](http://web.grinnell.edu/individuals/kuipers/stat2labs/CoffeeTruck.html). In this game, students collect sales data on a small coffee businees. Players can design experiments to determine how to maximize profit within the game by adjusting various factors, such as location, time of day, price, and type of music. The goal is to design a business plan that will earn the most sales and make the largest amount of profits.
+This is Part 2 of an introduction to R Markdown. In this document, you will be asked to read and analyze several datasets using data from the [Statistically Grounded Game](http://web.grinnell.edu/individuals/kuipers/stat2labs/CoffeeTruck.html). In this game, students collect sales data on a small coffee business. Players can design experiments to determine how to maximize profit within the game by adjusting various factors, such as location, time of day, price, and type of music. The goal is to design a business plan that will earn the most sales and make the largest amount of profits.
 
 We start by using the `readr` package to read our data, then `mosaic` and `ggformula` packages to view the data and conduct some initial statistical analysis. In later sections, we use two additional packages to make modifications to the data. We start by requiring all packages that we will be using in this R Markdown document.
 
@@ -28,19 +28,19 @@ Coffee <- read_csv("data/Coffee.csv")   # Reads the data
 head(Coffee, 5)                         # Shows the first 5 rows of the data 
 ```
 
-This is a cleaned and organized subset of a full dataset that you will view later. The data include the following variables:
+This is a cleaned and organized subset of a full dataset that you will view later. The data includes the following variables:
 
 * Day: the day (1 - 40) when the data was collected. Since this is a subset of the full experiment, not every day within this data.
 * Location: where the coffee was sold (City Park or in the Business District)
 * Price: The cost of each cup of coffee (every cup was sold for $3 in this sample)
 * Time: The time of day when the coffee was sold (Morning or Afternoon)
-* Temperature: The average daily temprature during the Day/Time coffee was sold.
+* Temperature: The average daily temperature during the Day/Time coffee was sold.
 * Sales: The number of cups sold during that Day/Time.
 * Income: The income earned during that time (Sales * Price)
 
-## 2. Initial Investigation: The Relationship between Location and Sales.
+## 2. Initial Investigation: The Relationship Between Location and Sales.
 
-We will start with a few commands from the `mosaic` packate to view our data. Recall that `mosaic` uses a common structure for all their commands:
+We will start with a few commands from the `mosaic` package to view our data. Recall that `mosaic` uses a common structure for all its commands:
 
 <center>
 <h3><strong><span class="invboxed">goal</span> ( <span class="invboxed">y</span> ~ <span class="invboxed">x</span> , data = <span class="invboxed">mydata</span> )</strong> 
@@ -58,7 +58,7 @@ gf_labs(title = "Figure 1", caption = "Boxplot of Coffee Truck Sales by Location
 ```
 
 
-Without carefully evaluting the data, some people may decide to conduct a t-test to compare these two groups.Our null and alternative hypotheses are: 
+Without carefully evaluating the data, some people may decide to conduct a t-test to compare these two groups. Our null and alternative hypotheses are: 
 
 <center> $H_0: \mu_B = \mu_P$  vs.  $H_1: \mu_B \neq \mu_P$ </center>
 
@@ -66,7 +66,7 @@ Without carefully evaluting the data, some people may decide to conduct a t-test
 t.test(Sales ~ Location, data = Coffee)
 ```
 
-We see that the t.test indicates that there is no evidence of differences in `Sales` based upon `Location`. However, lets view the data a little more carefully. In particular, lets look at the influence of a third variable, `Time`.
+We see that the t.test indicates that there is no evidence of differences in `Sales` based upon `Location`. However, let's view the data a little more carefully. In particular, look at the influence of a third variable, `Time`.
 
 ```{r fig.height = 3, fig.width = 6}
 gf_boxplot(Sales ~ Location, data = Coffee, color = ~Time) %>%
@@ -74,7 +74,7 @@ gf_labs(title = "Figure 2", caption = "Boxplot of Coffee Truck Sales by Location
 
 ```
 
-The plot clearly indicates that there is an **Interaction Term** that should be included in our analysis, since the effect of `Location` on `Sales` is influenced by a third varialbe, `Time`.
+The plot clearly indicates that there is an **Interaction Term** that should be included in our analysis, since the effect of `Location` on `Sales` is influenced by a third variable, `Time`.
 
 
 ```{r fig.height = 3, fig.width = 6}
@@ -92,7 +92,7 @@ dim(CoffeeFull)
 tally(`Time of Day` ~ Price, data = CoffeeFull)
 ```
 
-Notice that the `Time of Day` variable includes four different times of day. Also the `Price` variable has four levels and are represented as characters with a `$` infront of each number.
+Notice that the `Time of Day` variable includes four different times of day. Also the `Price` variable has four levels and are represented as characters with a `$` in front of each number.
 
 ```{r message = FALSE}
 # The `str_sub` command extracts the character in the second position for the Price variable:
@@ -124,7 +124,7 @@ summary(aov(Sales ~ Location * Time, data = Coffee1))
 
 #### Reproducing Data 1
 
-Now lets determine if these results are reproduble. Since this data was collected for a class project, many students used the same methods to collect their own unique simple random sample. A second dataset, called `CoffeeTruck2.csv` provides a second dataset. 
+Now we will determine if these results are reproducible. Since this data was collected for a class project, many students used the same methods to collect their own unique simple random sample. A second dataset, called `CoffeeTruck2.csv` provides a second dataset. 
 
 To evaluate this data, and determine if we get similar results for both samples, simply replace 
 
@@ -136,7 +136,7 @@ line 90: `CoffeeFull <- read_csv("data/CoffeeTruck2.csv")` and Knit the document
 * Did you come to the same conclusions with both datasets? 
 * Do you think sample size had any influence on the reproducibility of this study?
 
-R Markdown allows us to quickly idenify whether any any data points were removed or modified. In addition, R Markdown makes it extremely easy to repeat earlier analysis. After the data is collected, only one line of code needs a small change, `CoffeeFull <- read_csv("data/CoffeeTruck.csv")` and the anlysis is completely redone.
+R Markdown allows us to quickly identify whether any any data points were removed or modified. In addition, R Markdown makes it extremely easy to repeat an earlier analysis. After the data is collected, only one line of code needs a small change, `CoffeeFull <- read_csv("data/CoffeeTruck.csv")` and the analysis is completely redone.
 
 While it initially may take a little longer to analyze data with R Markdown files, there is great benefit in being able to quickly validate your data cleaning and statistical models, as well as creating reproducing results. 
 
@@ -165,7 +165,7 @@ If you want to conduct your own validation of reproducibility, you can collect y
      * Get Data
 4. Download the .csv file and save it on your desktop as `CoffeeTruck3`. Now use the `Upload` button in the `Files` window of Rstudio.cloud and save your data as `CoffeeTruck3` in the `data` folder.. 
 5. Change the following lines of code to `eval = TRUE`, `echo = TRUE` and change `data/CoffeeTruck.csv` to `data/CoffeeTruck3.csv`. 
-6. Run the lines of code below to conduct your own reproducible anlaysis. Did your ANOVA results and boxplot agree with those in Section 2?
+6. Run the lines of code below to conduct your own reproducible analysis. Did your ANOVA results and boxplot agree with those in Section 2?
 
 
 ```{r message = FALSE, eval = FALSE, echo = FALSE}
