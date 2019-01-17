@@ -136,6 +136,10 @@ documents and webpages that include text, R code, R output, and graphics.
 
 #### Resources
 
+ * Example Rmd files:
+    * <IntroToRMarkdown/IntroductionToRMD_P1.Rmd>
+    * <IntroToRMarkdown/IntroductionToRMD_P2.Rmd>
+
  * [Reprodicible Research and R, Part 1](http://rpubs.com/skuiper/reproducibility1)
  * [Reprodicible Research and R, Part 2](http://rpubs.com/skuiper/reproducibility2)
  * [R Markdown Cheet Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)  
