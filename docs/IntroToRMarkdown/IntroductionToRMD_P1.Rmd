@@ -1,5 +1,5 @@
 ---
-title: "Introduction to RMarkdown files"
+title: "Introduction to R Markdown Files"
 author: "Shonda Kuiper"
 output:
   html_document: default
@@ -50,7 +50,6 @@ In the code below we 1) identify any R packages that are needed then 2) read in 
 library(ggformula)  # A package to create graphs
 library(mosaic)     # A package for introductory statistics calculations
 library(readr)      # A package to read data
-
 Weather <- read_csv("data/Weather.csv")   # Reads the data 
 head(Weather, 5)                         # Shows the first 5 rows of the data 
 ```
@@ -60,7 +59,7 @@ head(Weather, 5)                         # Shows the first 5 rows of the data
 
 * Notice in the R Markdown file, we included `{r, message = FALSE}` instead of simply using `{r}`. This stops automated messages being printed in the knitted file. Knit this file with and without `message = FALSE`. How does the knitted HTML change without this code?
 
-* Go to the Markdown Cheat Sheet <http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf> and identify other `Embed code with knitr syntax`. How does the knitted file change when we add the `echo = FALSE` parameter to the code chunk? Note that each command needs to be separated by a comma, for example, ` {r, message = FALSE, echo = TRUE`}
+* Go to the Markdown Cheat Sheet <http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf> and identify other `Embed code with knitr syntax`. How does the knitted file change when we add the `echo = FALSE` parameter to the code chunk? Note that each command needs to be separated by a comma, for example, ` {r, message = FALSE, echo = TRUE`}.
 
 * Other commands can be used instead of the `head()` command. In the R chuck above, try `str(Weather)`, `nrow(Weather)`, `ncol(Weather)` and `dim(Weather)`.
 
@@ -74,7 +73,7 @@ Many useful functions are available in R packages. For example, functions such a
 
 1) In the R Console, after the `>` you need to install a package one time. For example `install.packages("ggformula")`. The quotes are needed around the package name.
 
-2) Every time you start an R session or create an R Markdown file, you will need to require the package, using the code `library(ggformla)`.
+2) Every time you start an R session or create an R Markdown file, you will need to require the package, using the code `library(ggformula)`.
 
 
 When you first install R, a set of core packages known as `base R` are automatically installed. This also includes several datasets. There are over 13,000 R packages, you only need to install the packages you want to use.
@@ -86,22 +85,22 @@ Whenever `> install.packages("")` is used, the most recent version of the packag
 
 There are several errors that are commonly made with R Markdown files. Here are a few things to keep in mind:
 
-* Stay aware of your workspace. The R Markdown file is separate from your console. Each knitted R Markdownfile, runs in a new workspace that does not have access to any of the data or code in other knitted files or the console. For example, even though you have knitted this R Markdown file with the Weather dataset, the command line `>` console has not recognized these commands. If you want to analyze the Weather dataset in the console, you will also need to read the data into the console. 
+* Stay aware of your workspace. The R Markdown file is separate from your console. Each knitted R Markdown file, runs in a new workspace that does not have access to any of the data or code in other knitted files or the console. For example, even though you have knitted this R Markdown file with the Weather dataset, the command line `>` console has not recognized these commands. If you want to analyze the Weather dataset in the console, you will also need to read the data into the console. 
 
-* Syntax is very important in R. Pay close attention to capitalization, commas, paretheses and quotes.
+* Syntax is very important in R. Pay close attention to capitalization, commas, parentheses and quotes.
 
 * It can be difficult to understand errors or failures when knitting a document. It is helpful to note the line number where the error occurs in the `R Markdown` tab of the console. 
 
 * It can be helpful to better understand some functions by typing `> ?functionname`. For example, you can type `> ?dim` , `> ??dim` , or `> example(dim)` in the console for more information and examples on how to use certain functions. Some packages have better documentation for their functions than others.
 
-* It is important to keep track of the working directories when reading in data files. This R Mardown document is in a Project (you can think of this somewhat as a folder) called `Intro_To_RMarkdown`. To read in the data we need to know what `Project` we are in and how to navigate to the data file. Notice when we read in the data, we started in the project folder, then went to a subfolder called data to get the data. You can use `> getwd()` or `> setwd()` in the console to nagivate to the correct working directories. In addition you can use the `Import Dataset` button in the Environment tab to navigate to any dataset in any of the folders or files that are in your project. After using the `Import Dataset` button, the complete path used to locate the file will appear in the console.
+* It is important to keep track of the working directories when reading in data files. This R Markdown document is in a Project (you can think of this somewhat as a folder) called `Intro_To_RMarkdown`. To read in the data we need to know what `Project` we are in and how to navigate to the data file. Notice when we read in the data, we started in the project folder, then went to a subfolder called data to get the data. You can use `> getwd()` or `> setwd()` in the console to navigate to the correct working directories. In addition you can use the `Import Dataset` button in the Environment tab to navigate to any dataset in any of the folders or files that are in your project. After using the `Import Dataset` button, the complete path used to locate the file will appear in the console.
 
-* In Rstudio.cloud, you create additional folders to any project by selecting the `New Folder` button in the `Files` tab.  Use the `Upload` button in the `Files` tab to load any files from your desktop onto you Rstudio.cloud account.
+* In Rstudio.cloud, you create additional folders to any project by selecting the `New Folder` button in the `Files` tab.  Use the `Upload` button in the `Files` tab to load any files from your desktop onto your Rstudio.cloud account.
 
 
 ## Including Statistical Analysis and Graphs
 
-Now that we have a basic understanding of R Markdown files, lets start analysing the data. The Weather data contains the 2016 and 2017 Weather data for several cities. More details on this data can be found in the [Mosaic Data Documentation](ftp://cran.r-project.org/pub/R/web/packages/mosaicData/mosaicData.pdf).
+Now that we have a basic understanding of R Markdown files, lets start analyzing the data. The Weather data contains the 2016 and 2017 Weather data for several cities. More details on this data can be found in the [Mosaic Data Documentation](ftp://cran.r-project.org/pub/R/web/packages/mosaicData/mosaicData.pdf).
 
 ```{r}
 names(Weather)
