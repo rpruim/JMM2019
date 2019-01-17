@@ -49,10 +49,11 @@ RecentMovies <-
 
 ## About this Tutorial
 
- * Written using [`learnr`](https://rstudio.github.io/learnr/), 
+* Written using [`learnr`](https://rstudio.github.io/learnr/), 
  a package for creating tutorials
  
- * Hosted at <http://rsconnect.calvin.edu/wrangling-jmm2019>
+* Hosted at 
+    * <http://rsconnect.calvin.edu/wrangling-jmm2019>
  
  
 ### A little help from my friends
@@ -64,12 +65,6 @@ This tutorial has evolved from presentations and tutorials made by
  * Jo Hardin
  * Miles Ott
  * Nicholas Horton
-
-An earlier version of this tutorial was presented at Big Data Ignite 2017.
-
-<div align = "center">
-<img src="images/BDIHorizontalLogo_Gradient.png" width = 40%>
-</div>
 
 ## Data used in the tutorial
 
@@ -157,7 +152,9 @@ sample_n(Movies, 3)     # 3 random movies
 ```
 
 ```{r, pipe01-solution}
+set.seed(123)
 sample_n(Movies, 3)     # 3 random movies
+set.seed(123)
 Movies %>% sample_n(3)  # 3 random movies; chaining syntax
 ```
 
@@ -169,6 +166,8 @@ Here's a silly example that illustrates why `%>%` is helpful.
     Went hopping through the forest
     Scooping up the field mice
     And bopping them on the head.
+
+Suppose we wanted to express this poem in code...
 
 ### Without chaining
 
@@ -336,6 +335,7 @@ but it conflicts with a funciton with that same name in another package.
 Movies %>% summarise(n())
 ```
 
+**Note:**
 `n()` only works in special `tidyverse` functions (like `summarise()`) and computes the 
 same value as `nrow()` but doesn't require us to name the data set inside `summarise()`.
 (This will be more important shortly.)
@@ -343,7 +343,7 @@ same value as `nrow()` but doesn't require us to name the data set inside `summa
 ```{r, summarise-nrow, exercise = TRUE}
 # same information but different data format
 Movies %>% 
-  summarise( n = nrow(Movies))
+  summarise(n = nrow(Movies))
 ```
 
 ### Multi-tasking allowed
@@ -352,7 +352,7 @@ Movies %>%
 # mean and total number of minutes of all the movies
 Movies %>% 
   summarise(
-    n = n(),
+    number_of_movies = n(),
     mean_length  = mean(length, na.rm = TRUE), 
     total_length =  sum(length, na.rm = TRUE)
     )
@@ -446,6 +446,9 @@ Slim_Movies %>% sample_n(3)          # 3 random rows
 Slim_Movies %>% sample_frac(.00007)  # random fraction of rows
 ```
 
+**Note to instructors:** Randomly sampling from a data set provides an 
+easy way to create tasks of equal difficulty but different solutions.
+
 ### filter()
 
 Let's use only use movies (cases) that have budget information and 
@@ -456,6 +459,7 @@ Movies2 <-
   Movies %>% 
   filter(!is.na(budget), nchar(title) <= 24)
 
+# sanity check.  longest title should be 24
 Movies2 %>% 
   summarise(n = n(), longest_title = max(nchar(title)))
 ```
@@ -506,12 +510,12 @@ Movies2 %>%
 Groups are in some sense "invisible", and it is easy to forget about them.
 When saving data that have been created with a grouping, you may want to 
 use `ungroup()` to remove the grouping information and let future you
-start fresh -- just saying...
+start fresh -- you have been warned...
 
 ### group() and mutate()
 
-`group()` impacts (some) other operations as well.  What happens when 
-`mutate()` is applied after `group_by()`?
+`group()` impacts some other operations as well.  What happens when 
+`mutate()` is applied after `group_by()`?  Give it a try and see.
 
 ```{r, group-mutate, exercise = TRUE}
 Movies2 %>%
@@ -521,18 +525,10 @@ Movies2 %>%
   select(title, length, length_rank)
 ```
 
-### Important Note
-
-Groups are in some sense "invisible", and it is easy to forget about them.
-When saving data that have been created with a grouping, you may want to 
-use `ungroup()` to remove the grouping information and let future you
-start fresh -- just saying...
-
 
 ## arrange() reorders the cases
 
-#### Your Turn
-
+#### Example
 
 ```{r, arange-issues, exercise = TRUE}
 Movies2 %>%
@@ -551,7 +547,7 @@ variables specified.
 
 ### Group, summarise, arrange
 
-Group-summarise-arrange is a common operation to list groups in
+Group-summarise-arrange is a common operation sequence to list groups in
 an order based on some calculation.  
 
 #### Your Turn
@@ -567,12 +563,18 @@ Movies2 %>%
   arrange( ?? )
 ```
 
+```{r, arrange-solution}
+Movies2 %>%
+  group_by(mpaa) %>%
+  summarise(mean_length = mean(length)) %>%
+  arrange(mean_length)
+```
 
 ## What else is there?
 
 ### Lots more.  Here are few examples.
 
- * `spread()` and `gather()` for converting from "long" to "wide or 
+ * `spread()` and `gather()` for converting from "long" to "wide" or 
  from "wide" to "long" shapes
  
  * `separate()` splitting a single variable into multiple variables.
@@ -582,7 +584,7 @@ Movies2 %>%
  * `left_join()`, `right_join()`, `inner_join()`, etc. for merging data 
  from multiple sources.  (Like joins in SQL.)
  
- * `lubridate` has functions for working with dates and times
+ * The `lubridate` packages has functions for working with dates and times
  
 [TB Case Study tutorial](http://rsconnect.calvin.edu/tidy-tb) illustrates
 some of these in a case study using data from the World Health Organization.
@@ -640,6 +642,8 @@ When starting, it can be helpful to work with a small subset of the data.  When
 you have your data wrangling statements in working order, shift to the entire
 data table.
 
+Let's get just recent movies that have an MPAA rating category.
+
 ```{r, small-subset, exercise = TRUE}
 RecentMovies <-
   Movies %>%
@@ -659,6 +663,11 @@ RecentMovies %>%
   summarise(avg = ????(rating)) 
 ```
 
+```{r, rating-solution}
+RecentMovies %>%
+  summarise(avg = mean(rating)) 
+```
+
 
 #### What is the average IMDB user rating of movies for each mpaa category?
 
@@ -668,6 +677,11 @@ RecentMovies %>%
   summarise(avg = ????(rating))
 ```
 
+```{r, rating-by-cat-solution}
+RecentMovies %>% 
+  group_by(mpaa) %>% 
+  summarise(avg = mean(rating))
+```
 #### How many Action Movies in each year?
 
 ```{r, action-movies, exercise = TRUE}
@@ -676,14 +690,43 @@ RecentMovies %>%
   summarise(Actioncount = sum(????))
 ```
 
+```{r, action-movies-solution}
+RecentMovies %>%
+  group_by(year) %>%
+  summarise(Actioncount = sum(Action))
+
+# alternative method
+RecentMovies %>%
+  filter(Action == 1) %>%
+  group_by(year) %>%
+  summarise(action_count = n())
+```
+
+<div id="action-movies-hint">
+**Hint:** `Action` contains 0 or 1 depending on whether the movie is an 
+action movie.
+</div>
+
+
 #### How many Comedies of each mpaa rating in each year?
 
 ```{r, comedies, exercise = TRUE}
 RecentMovies %>%
+  filter(???) %>% 
   group_by(????, ????) %>%
   summarise(????)
 ```
 
+```{r, comedies-solution}
+RecentMovies %>%
+  filter(Comedy == 1) %>%
+  group_by(mpaa) %>%
+  summarise(number = n())
+```
+
+<div id="comedies-hint">
+**Hint:** `Comedy` is 1 for comedies, else 0.
+</div>
 
 #### Track the average IMDB ratings for movies with mpaa "R" over the years.
 
@@ -692,9 +735,16 @@ Movies %>%
   filter(mpaa == "R") %>%     # just the rated R movies
   group_by(year) %>%          # for each year for each movie title
   summarise(mean_user_rating = ????) %>%
-  gf_point(mean_user_rating ~ year)  # plot results
+  gf_line(mean_user_rating ~ year)  # plot results
 ```
 
+```{r r-movies-solution}
+Movies %>%
+  filter(mpaa == "R") %>%     # just the rated R movies
+  group_by(year) %>%          # for each year for each movie title
+  summarise(mean_user_rating = mean(rating)) %>%
+  gf_line(mean_user_rating ~ year)  # plot results
+```
 
 #### Track the number of IMDB ratings given to R-rated movies over the years
 
@@ -710,13 +760,33 @@ Movies %>%
   gf_line(??? ~ year)  # plot results
 ```
 
+#### Track the average IMDB ratings for movies in each mpaa rating group over the years.
+
+```{r ratings-of-movies, exercise = TRUE}
+Movies %>%
+  group_by(???, ???) %>% 
+  summarise(mean_user_rating = ????) %>%
+  gf_smooth(mean_user_rating ~ year, color = ~ mpaa, span = 0.7)  # plot results
+```
+
+```{r ratings-of-movies-solution}
+Movies %>%
+  group_by(year, mpaa) %>% 
+  summarise(mean_user_rating = mean(rating)) %>%
+  gf_smooth(mean_user_rating ~ year, color = ~ mpaa, span = 0.7)  # plot results
+```
+
 #### Challenge
 
-Calculate the average per rating rather than the average per movie.  
+Redo the previous problem but average over voters rather than movies (because some
+movies have many more votes than others).
+
+```{r ratings-of-movies-challenge, exercise = TRUE}
+
+```
 
 
 ## You are on your way 
-
 
 ### Keep learning
 
