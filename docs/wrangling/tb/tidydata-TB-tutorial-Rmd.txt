@@ -1,4 +1,6 @@
-
+```{r include = FALSE}
+# delete this and start with the YAML header (---)
+```
 ---
 title: "Tidying up a data set: A Case Study with TB data"
 author: "Randall Pruim"
