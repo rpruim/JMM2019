@@ -78,31 +78,18 @@ Things you might share about yourself:
   * favorite hobby 
   * something on the JMM program you are looking forward to
 
-## When do we fill out surveys?
+## How much have we used R?
 
 ```{r, echo = FALSE}
-d1 <- lubridate::mdy_hms("jan-09-2019 11:24:00am")
-d2 <- lubridate::mdy_hms("jan-13-2019 01:02:00am")
-gf_histogram( ~ time, data = S, boundary = min(S$time),
-              binwidth = lubridate::hours(3)) %>% 
-  gf_vline(xintercept = d1, color = "red", size = 1.5, alpha = 0.6) %>%
-  gf_vline(xintercept = d2, color = "red", size = 1.5, alpha = 0.6) %>% 
-  gf_labs(x = "survey submission time (EST)")
+gf_counts(~ R.prof, data = S %>% filter(keep), 
+          fill = ~ course, show.legend = TRUE) %>%
+  gf_labs(x = "tidyverse proficiency")
 ```
 
-## When do we fill out surveys?
-
-```{r, echo = FALSE}
-d1 <- lubridate::mdy_hms("jan-09-2019 11:24:00am")
-d2 <- lubridate::mdy_hms("jan-13-2019 01:02:00am")
-gf_jitter(R.proficiency ~ time, data = S %>% filter(keep), 
-          width = 0, height = 0.3,
-          alpha = 0.7, size = 1.5) %>%
-  gf_vline(xintercept = d1, color = "red", size = 1.5, alpha = 0.6) %>%
-  gf_vline(xintercept = d2, color = "red", size = 1.5, alpha = 0.6) %>% 
-  gf_labs(x = "survey submission time (EST)")
+```{r, eval = FALSE}
+library(ggformula)
+gf_counts(~ R.prof, data = S, fill = ~ course)
 ```
-
 
 ## How much have we used tidyverse?
 
@@ -113,19 +100,47 @@ gf_counts(~ tidyverse.prof, data = S %>% filter(keep),
   gf_labs(x = "tidyverse proficiency")
 ```
 
-# What is tidyverse?
+```{r, eval = FALSE}
+library(ggformula)
+gf_counts(~ tidyverse.prof, data = S, fill = ~ course)
+```
 
-## What is tidyverse?
+## When do we fill out surveys?
 
-* A collection of packages by Hadley Wickham (and friends)
-  * goal: solve important data analysis problems in a coherent, systematic way
+```{r, echo = FALSE}
+d1 <- lubridate::mdy_hms("jan-09-2019 11:24:00am")
+d2 <- lubridate::mdy_hms("jan-13-2019 01:02:00am")
+gf_histogram( ~ time, data = S %>% filter(keep), 
+              boundary = min(S$time),
+              binwidth = lubridate::hours(3)) %>% 
+  gf_vline(xintercept = d1, color = "red", size = 1.5, alpha = 0.6) %>%
+  gf_vline(xintercept = d2, color = "red", size = 1.5, alpha = 0.6) %>% 
+  gf_labs(x = "survey submission time (EST)")
+```
 
-* `dplyr` and `tidyr`: parts of this toolkit devoted to data transformation
+```{r, eval = FALSE}
+library(ggformula)
+gf_histogram( ~ time, data = S)
+```
 
-  * useful for preparing "found data" for your students
-  * useful for combining data from multiple sources
-  * useful for rearranging data to make it more convenient to work with
-  
+## When do we fill out surveys?
+
+```{r, echo = FALSE}
+d1 <- lubridate::mdy_hms("jan-09-2019 11:24:00am")
+d2 <- lubridate::mdy_hms("jan-13-2019 01:02:00am")
+gf_jitter(R.prof ~ time, data = S %>% filter(keep), 
+          width = 0, height = 0.3,
+          alpha = 0.7, size = 1.5) %>%
+  gf_vline(xintercept = d1, color = "red", size = 1.5, alpha = 0.6) %>%
+  gf_vline(xintercept = d2, color = "red", size = 1.5, alpha = 0.6) %>% 
+  gf_labs(x = "survey submission time (EST)")
+```
+
+```{r, eval = FALSE}
+library(ggformula)
+gf_jitter(R.prof ~ time, data = S)
+```
+
 # Presenters/Facilitators
 
 ## Shonda Kuiper, Grinnel College
@@ -141,3 +156,50 @@ knitr::include_graphics("../images/InchWormMedium.jpg")
 ```
 
 
+# What is tidyverse?
+
+## Less Volume, More Creativity
+
+"Less Volume, More Creativity" can serve as a guiding principle to
+select and R toolkit that is 
+
+* small (fewer commands/ideas/structures is better)
+* coherant (components play well together)
+* powerful (gets the job done)
+
+### Examples
+
+  * `mosaic` (and `ggformula`) for numerical and graphical summaries, modeling
+  * `R Markdown` for document creation
+  * `dplyr`/`tidyverse` for data transformation
+
+## What is tidyverse?
+
+* A collection of packages by Hadley Wickham (and friends)
+  * goal: solve important data analysis problems in a coherent, systematic way
+
+* `dplyr` and `tidyr`: parts of this toolkit devoted to data transformation
+
+  * useful for preparing "found data" for your students
+  * useful for combining data from multiple sources
+  * useful for rearranging data to make it more convenient to work with
+  
+* `tidyverse` is quite large, but its components can be added one by one,
+and since they play well together, the marginal cost of adding a new 
+tools to the toolkit is low.
+
+## Let's give it a try
+
+Running the `learnr` tutorial
+
+* links available at <https://rpruim.github.io/JMM2019/>
+
+* interactive tutorials available on two servers (at Calvin and at RStudio)
+
+* also links to the source (Rmd) file that you can download and run
+locally 
+
+    * avoid network latency issues
+    * see how the tutorials are created
+    * requires that `learnr` (and some other R packages) be 
+    installed on your system
