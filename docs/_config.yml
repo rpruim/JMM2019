@@ -1,0 +1,8 @@
+
+# serve some files raw
+#
+keep_files:
+  - wrangling/intro/*Rmd
+  - wrangling/tb/*Rmd
+
+
