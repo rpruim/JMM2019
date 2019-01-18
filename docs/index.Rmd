@@ -160,11 +160,21 @@ and download these files:
 
 #### Goals for the day
 
+* Learn what **tidy data** is and why it is a useful concept
+* Learn how to use basic components of `dplyr` toolkit to transform data
+
+
 #### Resources
 
- * Data Wrangling: <http://rsconnect.calvin.edu/wrangling-jmm2019>
+ * Intro to Data Wrangling Tutorial: 
+    * <http://rsconnect.calvin.edu/wrangling-jmm2019>
+    * <https://rpruim.shinyapps.io/wrangling-jmm2019>
     
-    * has many uses, including preparing data for plotting
+ * TB Case Study Tutorial: 
+    * <http://rsconnect.calvin.edu/tidy-tb/>
+    * <https://rpruim.shinyapps.io/tidydata-TB-tutorial/>
+    
+    
 
 ### Day 2: Teaching Modeling with R
 
