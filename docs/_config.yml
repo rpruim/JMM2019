@@ -1,0 +1,12 @@
+
+# serve some files raw
+#
+exclude:
+  - wrangling/intro/*Rmd
+  - wrangling/tb/*Rmd
+
+keep_files:
+  - wrangling/intro/*Rmd
+  - wrangling/tb/*Rmd
+
+
