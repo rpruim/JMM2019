@@ -171,12 +171,12 @@ and download these files:
  * Intro to Data Wrangling Tutorial: 
     * <http://rsconnect.calvin.edu/wrangling-jmm2019>
     * <https://rpruim.shinyapps.io/wrangling-jmm2019>
-    * [Rmd file](wrangling/wrangling-jmm2019.Rmd)
+    * [Rmd file](wrangling/intro/wrangling-jmm2019.Rmd)
     
  * TB Case Study Tutorial: 
     * <http://rsconnect.calvin.edu/tidy-tb/>
     * <https://rpruim.shinyapps.io/tidydata-TB-tutorial/>
-    * [Rmd file](wrangling/tidydata-TB-tutorial.Rmd)
+    * [Rmd file](wrangling/tb/tidydata-TB-tutorial.Rmd)
 
 ### Day 2: Teaching Modeling with R
 
