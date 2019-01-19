@@ -77,6 +77,7 @@ in R
   * Tutorial 
       * [at rsconnect.calvin.edu](http://rsconnect.calvin.edu/less-volume/jmm2019)
       * [at shinyapps.io](https://rpruim.shinyapps.io/Less-Volume-JMM2019/)
+      * [Rmd](less-volume/tutorial/Less-Volume-JMM2019.Rmd)
       * [Google presentation with example plots](https://docs.google.com/presentation/d/11w4jK-PLc_v7Sm0gNcj5mAyHA8uyDWU7VTlYBjN9oks/edit?usp=sharing).
 
 #### rstudio.cloud
@@ -156,7 +157,7 @@ and download these files:
 
 ## Minicourse #12: <br>Keep Teaching Statistics with R and RStudio
 
-### [Welcome](welcome/JMM2018-welcome2.html)
+### [Welcome](welcome/JMM2019-welcome2.html)
 
 ### Day 1: Data Wrangling with the tidyverse
 
@@ -182,7 +183,15 @@ and download these files:
 
 #### Goals for the day
 
+* Learn how to fit and analyze (linear) models in R
+    * using least squares/maximum likelihood
+    * using simulation based inference
+    * using Bayesian statistics
+    
 #### Resources
+
+
+#### Bonus Material
 
 * [Teaching Statistics with R](http://rpubs.com/skuiper/TeachStats1)
 * An Rstudio.cloud project on creating maps <https://rstudio.cloud/spaces/8645/join?access_code=EU8AYhXB7vmNhHEToFUJLr9Fc6%2Fznnn%2Bb%2FdsBi%2Bo>
