@@ -196,8 +196,8 @@ and download these files:
 If the above tutorial is not working properly, we have several backup options:
 
 * Download an RMD file: [ModelingCarsBasic/ModelingData.Rmd](ModelingCarsBasic/ModelingData.Rmd)
-* Download data:[GMCars1.csv](ModelingCarsBasic/data/GMCars1.csv)
-* Download data:[GMCars2.csv](ModelingCarsBasic/data/GMCars2.csv)
+* Download data: [GMCars1.csv](ModelingCarsBasic/data/GMCars1.csv)
+* Download data: [GMCars2.csv](ModelingCarsBasic/data/GMCars2.csv)
 * You can view as a presentation here: http://rpubs.com/skuiper/ModelingCars
 * If you have an rstudio.cloud account, you can access and run the code here: <https://rstudio.cloud/project/179181> 
 
