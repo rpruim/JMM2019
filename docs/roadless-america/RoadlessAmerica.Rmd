@@ -9,6 +9,7 @@ runtime: shiny_prerendered
 knitr::opts_chunk$set(echo = TRUE)
 library(learnr)
 library(mosaic)
+theme_set(theme_bw())
 ```
 
 
@@ -42,7 +43,7 @@ ME <- 2 * sqrt(0.5 * 0.5 / n); ME
 Or we can explore graphically.  Adjust `xlim` and `yintercept` to determine the sample size
 required for a margin of error of $\pm$ 1%.
 
-```{r graphcial-sample-size, exercise = TRUE}
+```{r graphcial-sample-size, exercise = TRUE, fig.width = 8, fig.height = 3}
 library(mosaic)
 gf_fun(2 * sqrt(0.5 * 0.5 / n) ~ n, xlim = c(100, 2000)) %>%
   gf_hline(yintercept = 0.03, color = "red")

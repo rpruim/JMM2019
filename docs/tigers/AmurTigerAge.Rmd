@@ -9,7 +9,7 @@ knitr::opts_chunk$set(
   include = TRUE,
   fig.align = "center",
   fig.height = 3, 
-  fig.width = 5
+  fig.width = 3
   )
 library(ggformula)
 library(mosaic)
@@ -35,7 +35,7 @@ An important component of monitoring endangered species is to understand the age
 *	Region - one of 6 regions of the preserve (0, 1, 2, 3, 4 and 5) defined by terrain features
 
 
-## Some packages we will use
+#### Some packages we will use
 
 Be sure to load these packages *in your R Markdown document*.
 
@@ -46,10 +46,10 @@ library(readr)      # to load data from csv
 library(GGally)     # for graphical comparisions of pairs of variables
 ```
 
-## Loading the data
+#### Loading the data
 
 
-```{r}
+```{r message = FALSE}
 Tiger1 <- read_csv("data/TigerData1.csv")   # Reads the data 
 head(Tiger1, 5)   
 ```
@@ -57,18 +57,13 @@ head(Tiger1, 5)
 
 ## 2. Inspect the Data
 
-Produce a few statistics and graphs to get a feel for each of the variables in the data set. 
+Produce a few statistics and graphs to get a feel for each of the variables in the data set. We provide several example plots below.
 
 ```{r }
 Tiger1 <- mutate(Tiger1, Region = as.factor(Region))
 
 favstats(Age ~ Sex, data = Tiger1)
 tally(Region ~ Sex, data = Tiger1)
-
-gf_point(Age ~ Weight, data = Tiger1, color = ~ Sex) %>%
-gf_lm()
-
-gf_density(~ Age, data = Tiger1, color = ~ Sex, fill = ~ Sex) 
 ```
 
 ```{r, fig.width = 6, fig.height = 6, message = FALSE }
@@ -77,9 +72,11 @@ ggpairs(TigerCont)
 ggpairs(Tiger1)
 ```
 
-Are the three size variables (Length, Paw, and Weight) highly correlated? What appears to be the best predictor of Age?
+
 
 ```{r}
+gf_density(~ Age, data = Tiger1, color = ~ Sex, fill = ~ Sex) 
+
 gf_point(Age ~ Weight, data = Tiger1, color = ~ Sex) %>%
 gf_lm()
 
@@ -94,41 +91,27 @@ gf_jitter(Age ~ Region, color = ~ Sex, data = Tiger1,
 ```
 
 
+**Your Turn**
 
-Based on these summaries, do you think there are issues with your sample of
-tigers?  Are there tigers in the preserve that may not be adequately represented
-in the sample?  From the references listed below, we know, for example, that the
-age range for Amur tigers is typically 0-20 years old
+Modify the graphs above or use the `mplot()` function to create a graph.
 
-Examining the sample further, are there differences between tigers in different
-regions?
+In the RStudio Console, type 
 
-* Produce a graphic for one of the variables that measure tiger size by region (Weight, Length or Paw).What do you observe?  If there are differences, is this a concern in using the data in models to answer research questions?  Why or why not?  If there are differences, what are possible explanations?
-* If you have a large enough sample size, conduct a statistical test to determine if the average ages differ between region 0 and 3.   Do you have statistical evidence of a difference?
-* compare sex in the different regions.  Note that sex is not a continuous variable so different statistics/graphs will be needed.  
+*  $> library(mosaic)$, 
+*  $> mplot(Tiger1)$, 
+*  select 2 for a two-variable plot. 
+*  Select the gear symbol in the top right corner of the graphics window and experiment with various graphs. 
 
-```{r}
-gf_jitter(Weight ~ Region, data = Tiger1, color = ~ Sex) %>%
-gf_boxplot(alpha = .2)
-
-TigerReg <- Tiger1 %>% 
-  filter(Region == "0" | Region == "3")  # | means OR
-tally(Region ~ Sex, data = TigerReg)
-# Even though the sample size is too small
-t.test(Age ~ Region, data = TigerReg)
-```
+After you have created a graph you like, display the code and copy it into an R chunck. Modify the code to include an appropriate title to the plot.
 
 
+**Create one graph for each of the following questions**
 
-
-One of the first simple research questions of interest is determining the difference in characteristics between male and female tigers.
-
-* In your sample, is there a difference in size between male and female tigers (you may choose one indicator of size)? 
-* What factors could impact the analysis? Hint:  think about the role of each of the other predictors in the data set.  Why is a t-test not the best approach to answer the question based upon your data?
-
-```{r}
-t.test(Weight ~ Sex, data = Tiger1)
-```
+* Are the three size variables (Length, Paw, and Weight) highly correlated? 
+* What appears to be the best predictor of Age?
+* Is there a difference in the size of male and female tigers?
+* Are there differences between tigers in different regions?
+* Do you think there are issues with your sample of tigers?  For example, are there tigers in the preserve that may not be adequately represented in the sample?  From the references listed below, we know, for example, that the age range for Amur tigers is typically 0-20 years old
 
 
 #### Addressing Issues of Potential Bias
@@ -140,14 +123,12 @@ Based on the results and observations made in Section 2, you likely noticed that
 * 	If another sample were taken, what recommendations would you make for collecting the data?  Are there dangers with simply "randomly" walking around and collecting data on the closest tigers?
 
 
-
- A final note about random sampling and bias:  all is not lost if a sample has issues such as regional differences, or data that differs on some other characteristic between comparison groups.  Sometimes, more complicated models can account for or "adjust" for these disparities.  A multivariable model, for example, might suffice.  Of course, a better option is to carefully plan the sampling to ensure bias is not present.  A simple random sample is not always "best" and other sampling schemes are possible.  Review additional statistical studies or consult a statistician prior to collecting or analyzing data that could have these issues. 
+A final note about random sampling and bias:  all is not lost if a sample has issues such as regional differences, or data that differs on some other characteristic between comparison groups.  Sometimes, more complicated models can account for or "adjust" for these disparities.  A multivariable model, for example, might suffice.  Of course, a better option is to carefully plan the sampling to ensure bias is not present.  A simple random sample is not always "best" and other sampling schemes are possible.  Review additional statistical studies or consult a statistician prior to collecting or analyzing data that could have these issues. 
 
 ## 3. Creating a Model to Predict Age
 
-You may have noticed that in the previous graphs that measures of size (Length, Paw, and Weight) are very helpful for predicting a tigers age when they are young (such as less than 3 years old), but these variables are not very useful when a tiger is older.
-
-Let use a simple linear regression model to predict Age based upon Weight.
+### Model 1: Simple Linear Regression
+The code below creates a simple linear regression model to predict `Age` based upon `Weight`.
 
 ```{r}
 Tiger.lm = lm(Age ~ Weight, data = Tiger1)  # Creating a simple linear model
@@ -176,6 +157,9 @@ gf_point(resid1 ~ Weight, data = TigerModel)%>%
 * Is the model a good fit?
 * What does the p-value tell us about the relationship between Weight and Age?
 * What does the $R^2$ Value tell us about the relationship between Weight and Age?
+
+
+### Model 2: Interactions
 
 Based upon an earlier scatterplot, we may want to ask whether there is an important interaction term between Sex and Weight variables when predicting age? 
 
@@ -208,21 +192,21 @@ A second, larger dataset has been collected, `Tigerdata2.csv`. Conduct an anlysi
 
 ## 5. Collect Your Own Data
 
-Play the tutorial for the TigerSAMPLING game briefly so you are familiar with the game controls.  The game is found at the web site:  <http://statgames.tietronix.com/TigerSampling/> and select Load Tutorial. 
+![](pics/game1.png){width=30%}![](pics/game2.png){width=30%}
 
-To collect your own data, go to <http://statgames.tietronix.com/TigerSampling/>  and enter a PlayerName and GroupName (The "PlayerName" is not your personal name, just any combination of letters and numbers with no spaces). Use the GroupName JMM2019.  Select `Load Mission 1` and then `DataSet1`. Use the Full Screen option to see the entire game on your computer screen. If you forget commands anytime during game play, you can hit the "p" key to pause the game and see game instructions. This will allow you to review all the controls, exit the game and save your data.
+To collect your own data, go to <http://statgames.tietronix.com/TigerSampling/>  and enter a PlayerName and GroupName (The "PlayerName" is not your personal name, just any combination of letters and numbers with no spaces). Use the GroupName JMM2019.  Select `Load Mission 1` and then `DataSet1`. You should play the tutorial briefly to get a feel for the controls. Use the Full Screen option to see the entire game on your computer screen. If you forget commands anytime during game play, you can hit the "p" key to pause the game and see game instructions. This will allow you to review all the controls, exit the game and save your data.
+
+**Instructor resources** for this game are available at: <http://web.grinnell.edu/individuals/kuipers/stat2labs/tigersampling.html>.
 
 **Questions to consider related to collecting data** 
 
-1. What are some important characteristics of the tiger sample you collect to build a model for
-age?  What are some problems that could impact the quality of data collected on tigers?
+1. What are some important characteristics of the tiger sample you collect to build a model for age?  What are some problems that could impact the quality of data collected on tigers?
 2. In collecting data on real tigers, what issues would you want to consider?  How difficult do you
 think getting a large sample? How difficult is it to get a true simple random sample?   
-3. In practice, the age of all tigers in the preserve would not be known initially.  How could this be
-overcome?
+3. In practice, the age of all tigers in the preserve would not be known initially.  How could this be overcome?
 4. What strategies will you use to collect your sample in the game?   
 
-## 6. Background Reading
+## 6. Background Reading and Class Discussion
 
 Before conducting this analysis students can read an optional paper discussing current methods of estimating age in lions largely through the use of proxy variables: [Sustainable trophy hunting of African lions](https://cbs.umn.edu/sites/cbs.umn.edu/files/public/downloads/Sustainable_trophy_hunting_of_African_lions.pdf) (2004 Nature article by Whitman et al.). If this link does not work, go to the lion research page <https://cbs.umn.edu/sites/cbs.umn.edu/files/public/downloads/Sustainable_trophy_hunting_of_African_lions.pdf> and find links to articles at the botton of the page.
 
@@ -245,65 +229,4 @@ author's use in their model?
 6. How precisely would you expect to predict ages of lion's based on the model in
 the article?  How could you improve the precision of the model?  
 
-
-## 7. How to build a model
-
-Building a model is both a science and an art, and there is no substitute for 
-experience.  But beginners need some guidelines to help them develop experiences
-more efficiently.  Suppose we are modeling how $y$ depends on some potential
-predictors $x_1, x_2, \dots$.
-
-### Is there theory to support a particular model?
-
-Sometimes we have good theoretical reasons to expect (or at least wonder about)
-a particular type of relationship.  If so, we should let that guide our model
-building.
-
-When we are less informed by a particular theory, we can answer the following
-questions to help guide us toward a model.
-
-### Should I include a constant term (intercept) in the model?
-
-Usually the answer to this is yes.  Certainly it is a good place to start.
-It is a pretty strong (and often clearly false) assumption that the response
-variable should be zero when all the predictors are 0.
-
-### Should I include (a transformation of) $x_i$ in the model?
-
-If it seems like $y$ might depend on $x_i$, then $x_i$ is a candidate for 
-inclusion.  [A tranformation of a variable $x_i$ is just another variable, 
-so it isn't really a special case.  But often transformed versions of the 
-"natural" or "available" variables improves the model.]
-
-### Should I include $x_i^2$ (quadratic term) in the model?
-
-The main purpose of a quadratic term is not turn a line into a curve (transformations also do that) but to turn a monotonic function into a function
-with an optimum.  If we expect that there is a value of $x_i$ that makes 
-$y$ largest (or smallest), we should consider including a quadratic term.
-
-### Should I include $x_i x_j$ (interaction term) in the model?
-
-If how why depends on $x_i$ depends on the value of $x_j$, then an interaction
-term is warranted.  In particular, if we have used $x_i^2$ and the value of 
-$x_i$ that makes $y$ largest (or smallest) depends on $x_j$, then we should 
-include an interaction term.
-
-### Example
-
-How does the speed at which a bicyclist can ride a bicycle depend on
-
-  * gear ratio ($g$)
-  * steepness of the road ($s$)
-  
-Both variables seem likely to affect the speed, so we include $g$ and $s$ (and an intercept) in the model.
-
-If the gear ratio is too high or too low, the bicyclist cannot go as fast, so we 
-should include a quadratic term for $g$.  For any steepness, their is an optimal gear ratio.
-
-Furthermore, the optimal gear ratio depends on the steepness (that's we we make
-bicycles with multiple gear ratios).  So we should include an interaction term.
-
-But we don't need a quadratic term for $s$ since the speed is monotonic in 
-steepness.  (If it were not, as hill got steeper and steeper, we would go slower 
-and slower... until they got really steep, when we would start going faster again.)
 
