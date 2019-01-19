@@ -32,7 +32,7 @@ In this tutorial you will build a multivariate regression model to describe the 
 We start by reading in the data.
 
 ```{r message = FALSE, echo = TRUE}
-GMCars1 <- read.csv("C:/Users/KUIPERS/Desktop/RStudio/ModelingCars/data/GMCars1.csv")   # Reads the data 
+GMCars1 <- read_csv("../data/GMCars1.csv")   # Reads the data 
 head(GMCars1, 5)    # Shows the first 5 rows of the data 
 ```
 
@@ -202,8 +202,7 @@ Below we use another cars dataset to determine the relationship between `Cyl` an
 
 
 ```{r}
-#GMCars2 <- read_csv("data/GMCars2.csv")
-GMCars2 <- read.csv("C:/Users/KUIPERS/Desktop/RStudio/ModelingCars/data/GMCars2.csv")   # 
+GMCars2 <- read_csv("../data/GMCars2.csv")
 
 
 model1 = lm(Price ~ Mileage + Liter, data = GMCars2)  # Creating a simple linear model
