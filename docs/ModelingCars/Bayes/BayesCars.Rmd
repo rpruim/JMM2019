@@ -97,12 +97,18 @@ Let's take a look at the posterior distribution for each parameter.
 The `plot()` function automates this for us.
 (The plots on the right are diagnostics to show how well the HMC algorithm is converging.)
 
-```{r}
+```{r, plot, exercise = TRUE}
 plot(Cars.brm2)
 ```
 
-Alternatively, we can get the posterior samples in a tidy data frame and do whatever we 
-like with them.
+`stanplot()` provides a graphical representation of the parameter estimates:
+
+```{r, stanplot, exercise = TRUE}
+stanplot(Cars.brm2)
+```
+
+Alternatively, we can get the posterior samples in a tidy data frame and do
+whatever we like with them.
 
 ```{r, poster-df, exercise = TRUE}
 posterior_samples(Cars.brm2)
