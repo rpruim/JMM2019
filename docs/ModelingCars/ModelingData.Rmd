@@ -44,6 +44,8 @@ Cars.lm2 = lm(Price ~ Mileage + Make, data = GMCars1)
 Cars.lm3 = lm(Price ~ Mileage*Make, data = GMCars1) 
 
 GMCars1 = mutate(GMCars1, res1 = resid(Cars.lm), fits1 = fitted(Cars.lm), res2 = resid(Cars.lm2), fits2 = fitted(Cars.lm2), res3 = resid(Cars.lm3), fits3 = fitted(Cars.lm3))
+
+GMCars2 <- read.csv("data/GMCars2.csv")
 ```
 
 
@@ -240,9 +242,12 @@ variables) can have some limitations:
 Below we use another cars dataset to determine the relationship between `Cyl` and `Liter` on `Price`.
 
 
-```{r corr1, exercise=TRUE}
+```{r echo = TRUE, eval = FALSE}
 GMCars2 <- read_csv("data/GMCars2.csv")
+```
 
+
+```{r corr1, exercise=TRUE}
 model1 = lm(Price ~ Mileage + Liter, data = GMCars2)  # Creating a simple linear model
 anova(model1)
 ```

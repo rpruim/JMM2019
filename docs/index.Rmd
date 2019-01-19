@@ -190,7 +190,8 @@ and download these files:
     
 #### Resources
 
-* Modeling Data in R: 
+* Modeling Data in R: <http://shiny.grinnell.edu/ModelingCarData/>
+
 
 If the above tutorial is not working properly, we have several backup options:
 
