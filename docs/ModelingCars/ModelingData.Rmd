@@ -6,7 +6,13 @@ runtime: shiny_prerendered
 
 ```{r setup, include=FALSE}
 library(learnr)
+library(ggformula)
+library(mosaic)
+library(readr)      
 knitr::opts_chunk$set(echo = FALSE)
+options(scipen = 100)
+#options(digits=2)
+#theme_set(theme_bw)
 ```
 
 
@@ -24,33 +30,35 @@ In this tutorial you will build a multivariate regression model to describe the 
 * Sound (1 = upgraded speakers, 0 = standard speakers)
 * Leather (1 = leather seats, 0 = not leather seats)
 
-We start by reading in the data and requiring the packages that we will need.
+We start by reading in the data.
 
 ```{r intro, message = FALSE, echo = TRUE}
-library(ggformula)  # A package to create graphs
-library(mosaic)     # A package for introductory statistics calculations
-library(readr)      # A package to read data
-
-GMCars1 <- read_csv("data/GMCars1.csv")   # Reads the data 
+GMCars1 <- read.csv("data/GMCars1.csv")   # Reads the data 
 
 head(GMCars1, 5)    # Shows the first 5 rows of the data 
 ```
 
+```{r}
+Cars.lm = lm(Price ~ Mileage, data = GMCars1)
+Cars.lm2 = lm(Price ~ Mileage + Make, data = GMCars1) 
+Cars.lm3 = lm(Price ~ Mileage*Make, data = GMCars1) 
 
+GMCars1 = mutate(GMCars1, res1 = resid(Cars.lm), fits1 = fitted(Cars.lm), res2 = resid(Cars.lm2), fits2 = fitted(Cars.lm2), res3 = resid(Cars.lm3), fits3 = fitted(Cars.lm3))
+```
 
 
 ## Simple Linear Regression
 
 We will start with a simple linear regression model to predict `Price` from `Mileage`. To fit a linear regression model in R, we will use the function `lm()`.
 
-```{r SLR, exercise=TRUE, exercise.eval=TRUE}
+```{r SLR, exercise=TRUE}
 Cars.lm = lm(Price ~ Mileage, data = GMCars1)  # Creating a simple linear model
 coef(Cars.lm)
 summary(Cars.lm)
 ```
 
 
-```{r SLR2, exercise=TRUE, exercise.eval=TRUE}
+```{r SLR2, exercise=TRUE}
 gf_point(Price~Mileage, data = GMCars1) %>%
   gf_lm(interval='confidence')
 ```
@@ -58,41 +66,18 @@ gf_point(Price~Mileage, data = GMCars1) %>%
 **Questions**
 
 * What happens to Price as Mileage increases?
-* Since the slope fo the regression line is small ( - 0.213) can we conclude it is unimportant?
+* Since the slope fo the regression line is small ( - 0.211) can we conclude it is unimportant?
 * Does mileage help you predict price? What does the $p-value = 0.011$ tell you?
 * Does mileage help you predict price? What does the $R^2 = 0.026$ tell you?
 * Are there outliers or influential observations?
 
-## Finding specific values in our regression model
-
-Notice that each term in the linear model has been assigned a value:
-
-```{r SLR3, exercise=TRUE, exercise.eval=TRUE}
-str(summary(Cars.lm))
-```
-
-We can find the coefficents of our model with the `coef(Cars.lm)`, but for other terms we use the `$` symbol to pull any specific values. For example:
-
-```{r SLR4, exercise=TRUE, exercise.eval=TRUE}
-summary(Cars.lm)$r.squared
-```
-
-
-
-It is often useful to add the fitted values and the residuals to our original data
-
-```{r SLR5, exercise=TRUE, exercise.eval=TRUE}
-GMCars1 = mutate(GMCars1, res1 = Cars.lm$res, fits1 = Cars.lm$fitted.values)
-```
 
 
 ## Residual Plots and Model assumptions
 
-
-
 We use the following notation for our regression model:
 
-$y = \beta_0 + \beta_1*x_1 + \beta_2*x_2 + \epsilon$
+$y = \beta_0 + \beta_1*x_1  + \epsilon$
 where $\epsilon \sim N(0, \sigma)$. 
 
 When evaluating a regression model, it is useful to check the following conditions:
@@ -105,13 +90,17 @@ When evaluating a regression model, it is useful to check the following conditio
 
 Regression assumptions about the error terms are generally checked by looking at the residual plots.
 
+```{r echo = TRUE, eval = FALSE}
+GMCars1 = mutate(GMCars1, res1 = resid(Cars.lm), fits1 = fitted(Cars.lm))
+```
 
-```{r SLR6, exercise=TRUE, exercise.eval=TRUE}
+
+```{r SLR5, exercise=TRUE}
 gf_histogram(~ res1, data = GMCars1)
 ```
 
 
-```{r SLR7, exercise=TRUE, exercise.eval=TRUE}
+```{r SLR7, exercise=TRUE}
 gf_point(res1 ~ fits1, data = GMCars1)%>%
   gf_hline(yintercept = 0)
 ```
@@ -121,7 +110,7 @@ gf_point(res1 ~ fits1, data = GMCars1)%>%
 * Does the histogram indicate that the error terms are normally distributed?
 * Does the residual verses fits plot indicate equal variances for all values of `Mileage`?
 * Create a plot of Residuals vs. Mileage? Are their any clear patterns in the plot?
-* Create a plot of Residuals vs. other potential explanatory variables. Are their any clear patterns in these plots?
+* Create a plot of Residuals vs. other potential explanatory variables. Are their any clear patterns in these plots? Recall the other possible explanatory variables are Make, Type, Cyl, Liter, Doors, Cruise, Sound, and Leather. 
 
 
 
@@ -129,98 +118,42 @@ gf_point(res1 ~ fits1, data = GMCars1)%>%
 
 While the p-value tends to give some indication that `Mileage` is important, the $R^2$ value indicates that our model is not a good fit. In addition, there was a very clear pattern in the `Residuals vs. Make` plot. Thus we will add this term into our model.
 
-```{r MRM, exercise=TRUE, exercise.eval=TRUE}
+```{r MRM, exercise=TRUE}
 Cars.lm2 = lm(Price ~ Mileage + Make, data = GMCars1)  # Creating a simple linear model
 ```
 
+```{r echo = TRUE, eval = FALSE}
+GMCars1 = mutate(GMCars1, res2 = resid(Cars.lm2), fits2 = fitted(Cars.lm2))
+```
 
-```{r MRM2, exercise=TRUE, exercise.eval = TRUE}
-GMCars1 = mutate(GMCars1, res2 = Cars.lm2$res, fits2 = Cars.lm2$fitted.values)
 
+```{r MRM2, exercise=TRUE}
 gf_point(Price ~ Mileage, data = GMCars1, color = ~ Make)%>%
-  gf_line(fits2~Mileage)
+  gf_line(fits2 ~ Mileage)
 ```
 
 We also see that our `R^2` value increased significanlty. 
 
-```{r MRM3, exercise=TRUE, exercise.eval=TRUE}
-summary(Cars.lm)$r.squared
+```{r MRM3, exercise=TRUE}
+rsquared(Cars.lm)
 
-summary(Cars.lm2)$r.squared
-
-summary(Cars.lm2)$adj.r.squared
-
+rsquared(Cars.lm2)
 ```
 
-```{r MRM4, exercise=TRUE, exercise.eval=TRUE}
-GMCars1 = mutate(GMCars1, res2 = Cars.lm2$res, fits2 = Cars.lm2$fitted.values)
-
+```{r MRM4, exercise=TRUE}
 gf_histogram(~ res2, data = GMCars1)
 ```
 
 
-```{r MRM5, exercise=TRUE, exercise.eval=TRUE}
-GMCars1 = mutate(GMCars1, res2 = Cars.lm2$res, fits2 = Cars.lm2$fitted.values)
-
+```{r MRM5, exercise=TRUE}
 gf_point(res2 ~ fits2, data = GMCars1)%>%
   gf_hline(yintercept = 0)
 
-gf_point(res2 ~ Make, data = GMCars1)%>%
+gf_point(res2 ~ Mileage, data = GMCars1)%>%
   gf_hline(yintercept = 0)
 ```
 
-
-
-
-
-## Interaction Terms
-
-Notice that simply adding the `Make` variable intro our model forces the slope to be identicle in all three cases. However, a closer look at the data indicates that their may be an **interaction effect** since the effect of `Mileage` on `Price` appears to depend upon the `Make` of the car. To include interaction terms in our model, we use $X_1*X_2$
-
-```{r inter1, exercise=TRUE, exercise.eval=TRUE}
-Cars.lm3 = lm(Price ~ Mileage*Make, data = GMCars1)  # Creating a simple linear model
-```
-
-
-```{r inter2, exercise=TRUE, exercise.eval = TRUE}
-GMCars1 = mutate(GMCars1, res3 = Cars.lm3$res, fits3 = Cars.lm3$fitted.values)
-
-gf_point(Price ~ Mileage, data = GMCars1, color = ~ Make)%>%
-  gf_line(fits2~Mileage)
-
-gf_point(Price ~ Mileage, data = GMCars1, color = ~ Make)%>%
-  gf_line(fits3~Mileage)
-```
-
-We also see that our `R^2` value increased slightly.  
-
-```{r inter3, exercise=TRUE, exercise.eval=TRUE}
-
-summary(Cars.lm2)$adj.r.squared
-
-summary(Cars.lm3)$adj.r.squared
-
-```
-
-```{r inter4, exercise=TRUE, exercise.eval=TRUE}
-GMCars1 = mutate(GMCars1, res3 = Cars.lm3$res, fits3 = Cars.lm3$fitted.values)
-
-gf_histogram(~ res3, data = GMCars1)
-```
-
-
-```{r inter5, exercise=TRUE, exercise.eval=TRUE}
-GMCars1 = mutate(GMCars1, res3 = Cars.lm3$res, fits3 = Cars.lm3$fitted.values)
-
-gf_point(res3 ~ fits3, data = GMCars1)%>%
-  gf_hline(yintercept = 0)
-
-gf_point(res3 ~ Make, data = GMCars1)%>%
-  gf_hline(yintercept = 0)
-```
-
-
-After plotting a few more residual plots, try creating a model that you think would be a better fit.
+After plotting a few more residual plots, try creating a model that you think would be a better fit. Recall the other possible explanatory variables are Make, Type, Cyl, Liter, Doors, Cruise, Sound, and Leather. 
 
 ```{r add-function, exercise=TRUE, exercise.lines = 5}
 
@@ -230,11 +163,59 @@ After plotting a few more residual plots, try creating a model that you think wo
 
 
 
+
+## Interaction Terms
+
+Notice that simply adding the `Make` variable intro our model forces the slope to be identicle in all three cases. However, a closer look at the data indicates that their may be an **interaction effect** since the effect of `Mileage` on `Price` appears to depend upon the `Make` of the car. To include interaction terms in our model, we use $X_1*X_2$
+
+```{r inter1, exercise=TRUE, exercise.eval = TRUE}
+Cars.lm3 = lm(Price ~ Mileage*Make, data = GMCars1)  # Creating a simple linear model
+```
+
+
+```{r echo = TRUE, eval = FALSE}
+GMCars1 = mutate(GMCars1, res3 = resid(Cars.lm3), fits3 = fitted(Cars.lm3))
+```
+
+
+```{r inter2, exercise=TRUE}
+gf_point(Price ~ Mileage, data = GMCars1, color = ~ Make)%>%
+  gf_line(fits2~Mileage)
+
+gf_point(Price ~ Mileage, data = GMCars1, color = ~ Make)%>%
+  gf_line(fits3~Mileage)
+```
+
+We also see that our `R^2` value increased slightly.
+
+```{r inter3, exercise=TRUE}
+rsquared(Cars.lm2)
+
+rsquared(Cars.lm3)
+
+```
+
+```{r inter4, exercise=TRUE}
+gf_histogram(~ res3, data = GMCars1)
+```
+
+
+```{r inter5, exercise=TRUE}
+gf_point(res3 ~ fits3, data = GMCars1)%>%
+  gf_hline(yintercept = 0)
+
+gf_point(res3 ~ Mileage, data = GMCars1)%>%
+  gf_hline(yintercept = 0)
+```
+
+
+
+
 ## What is the best possible model?
 
 We can try to find the model with the "best" $R^2$ value, by simply putting all the terms in a model. Is the $R^2$ value significantly better than our previous models?
 
-```{r full1, exercise=TRUE, exercise.eval=TRUE}
+```{r full1, exercise=TRUE}
 Cars.lm4 = lm(Price ~ Mileage*Make*Doors*Type*Cyl*Liter*Cruise*Sound*Leather, data = GMCars1)
 
 summary(Cars.lm4)
@@ -259,19 +240,19 @@ variables) can have some limitations:
 Below we use another cars dataset to determine the relationship between `Cyl` and `Liter` on `Price`.
 
 
-```{r corr1, exercise=TRUE, exercise.eval=TRUE}
+```{r corr1, exercise=TRUE}
 GMCars2 <- read_csv("data/GMCars2.csv")
 
 model1 = lm(Price ~ Mileage + Liter, data = GMCars2)  # Creating a simple linear model
 anova(model1)
 ```
 
-```{r corr2, exercise=TRUE, exercise.eval=TRUE}
+```{r corr2, exercise=TRUE}
 model2 = lm(Price ~ Mileage + Cyl, data = GMCars2)  # Creating a simple linear model
 anova(model2)
 ```
 
-```{r corr3, exercise=TRUE, exercise.eval=TRUE}
+```{r corr3, exercise=TRUE}
 model3 = lm(Price ~ Mileage + Cyl + Liter, data = GMCars2)  # Creating a simple linear model
 anova(model3)
 ```
