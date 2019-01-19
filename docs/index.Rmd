@@ -206,6 +206,9 @@ and download these files:
     
 * Modeling Cars with `brm()` [Bayesian]
 
+    * [Tutorial @ shinyapps.io](https://rpruim.shinyapps.io/BayesCars/)
+    * [Rmd](ModelingCars/Bayes/BayesCars.Rmd)
+    
 * Modeling Cars with `do()` [Simulation Based Inference]
 
 #### Bonus Material
