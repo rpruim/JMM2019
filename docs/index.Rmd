@@ -213,6 +213,9 @@ and download these files:
 
 #### Bonus Material
 
+* Modeling Tigers
+    * [HTML](tigers/AmurTigerAge.html)
+    * [Rmd](tigers/AmurTigerAge.Rmd)
 * [Teaching Statistics with R](http://rpubs.com/skuiper/TeachStats1)
 * An Rstudio.cloud project on creating maps <https://rstudio.cloud/spaces/8645/join?access_code=EU8AYhXB7vmNhHEToFUJLr9Fc6%2Fznnn%2Bb%2FdsBi%2Bo>
 * Student activities, apps, datasets and code for the NYPD stop and frisk data: <http://web.grinnell.edu/individuals/kuipers/stat2labs/NYPD.html>
