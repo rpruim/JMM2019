@@ -1,0 +1,89 @@
+---
+title: "Roadless America"
+date: "JMM 2019"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(learnr)
+library(mosaic)
+```
+
+
+## How much of the continental US is roadless?
+
+### Definition of roadless
+
+Let's define roadless as more than one mile from a raod.  Suppose we want to estimate
+what fractions of the continental US is roadless.
+
+### How precise an estimate do we want?
+
+The worst case margin of error for a given sample size is easy to calculate.
+By plugging in different values of $n$, we can see how large our sample size must
+be for a desired level of precision.  
+(Note: If we have a rough idea of the true proportion and it
+is not near 50%, we can improve the estimate by choosing something we are quite certain is
+closer to 0.5 than the true value.)
+
+Experiment with different values of `n` to determine a sample size that will give us a 95%
+confidence interval with margin of error at most $\pm 5$%, $\pm3$%, or $\pm1$%. 
+(Are we willing to put in enough effort to estimate to $\pm1$%?)
+
+```{r sample-size, exercise=TRUE}
+n <- 100
+ME <- 2 * sqrt(0.5 * 0.5 / n); ME
+```
+
+### Graphcial Appraoch
+
+Or we can explore graphically.  Adjust `xlim` and `yintercept` to determine the sample size
+required for a margin of error of $\pm$ 1%.
+
+```{r graphcial-sample-size, exercise = TRUE}
+library(mosaic)
+gf_fun(2 * sqrt(0.5 * 0.5 / n) ~ n, xlim = c(100, 2000)) %>%
+  gf_hline(yintercept = 0.03, color = "red")
+```
+
+## Sampling 
+
+We can use `rgeo()` to sample random points on the globe.  By adding limits to longitude and 
+latitude, we can restrict ourselves to a region just a bit larger than the continental US.
+
+```{r locations, exercise = TRUE}
+Locations <- rgeo(4, latlim = c(25,50), lonlim = c(-65, -125))
+Locations
+```
+
+### Classifying locations
+
+The sampled points will be in three categories:
+
+* Within 1 mile of a road
+* Not within 1 mile of a road
+* Not in contentental US
+
+It would be fun to visit all these places, but it is cheaper to use a map.
+
+The map below is interactive.  Zoom in on each point to see if it is roadless.
+
+```{r leaflet, exercise = TRUE}
+Locations <- rgeo(10, latlim = c(25,50), lonlim = c(-65, -125))
+leaflet_map(Locations, radius = 1, unit = "miles")
+Locations
+```
+
+## Collecting and Analysing Data
+
+A google spreadsheet or google form (or other online data collection services) can be used
+to assemble data from many students in parallel.  `binom.test()` can be used to compute
+a confidenc interval.
+
+```{r binom-test, exercise = TRUE}
+# adjust the numbers 100 and 300 to reflect actual sample 
+binom.test(100, 300) %>% 
+  confint()
+```

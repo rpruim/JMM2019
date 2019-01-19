@@ -190,6 +190,11 @@ and download these files:
     
 #### Resources
 
+* Warm-Up: Roadless America
+    * [Tutorial at rsconnect.calvin.edu](http://rsconnect.calvin.edu:3939/roadless-america/)
+    * [Rmd](roadless-america/RoadlessAmerica.Rmd)
+    * [Poster (Smith College students)](https://www.smith.edu/docs/collaborations/2013/presentations/24_Cao,Stoudt,UdwinProceedings.pdf)
+
 * Modeling Cars with `lm()` [Least Squares/Maximum Likelihood]
     * [Tutorial @ Grinnell server](http://shiny.grinnell.edu/ModelingCarData/)
     * [Presentation @ Rpubs](http://rpubs.com/skuiper/ModelingCars)
