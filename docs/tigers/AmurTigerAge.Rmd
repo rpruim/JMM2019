@@ -48,7 +48,6 @@ library(GGally)     # for graphical comparisions of pairs of variables
 
 #### Loading the data
 
-
 ```{r message = FALSE}
 Tiger1 <- read_csv("data/TigerData1.csv")   # Reads the data 
 head(Tiger1, 5)   
@@ -71,7 +70,6 @@ TigerCont <- select(Tiger1, Age, Weight, NoseBlack, Paw, Length)
 ggpairs(TigerCont)
 ggpairs(Tiger1)
 ```
-
 
 
 ```{r}
@@ -192,7 +190,7 @@ A second, larger dataset has been collected, `Tigerdata2.csv`. Conduct an anlysi
 
 ## 5. Collect Your Own Data
 
-![](pics/game1.png){width=30%}![](pics/game2.png){width=30%}
+![](pics/game1.png){width=33%}![](pics/game2.png){width=33%}
 
 To collect your own data, go to <http://statgames.tietronix.com/TigerSampling/>  and enter a PlayerName and GroupName (The "PlayerName" is not your personal name, just any combination of letters and numbers with no spaces). Use the GroupName JMM2019.  Select `Load Mission 1` and then `DataSet1`. You should play the tutorial briefly to get a feel for the controls. Use the Full Screen option to see the entire game on your computer screen. If you forget commands anytime during game play, you can hit the "p" key to pause the game and see game instructions. This will allow you to review all the controls, exit the game and save your data.
 
