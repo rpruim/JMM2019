@@ -1,5 +1,5 @@
 ---
-title: "Modeling Data"
+title: "Modeling Cars"
 output: learnr::tutorial
 runtime: shiny_prerendered
 ---
