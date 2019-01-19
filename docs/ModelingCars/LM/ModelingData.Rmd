@@ -19,9 +19,17 @@ Cars.lm = lm(Price ~ Mileage, data = GMCars1)
 Cars.lm2 = lm(Price ~ Mileage + Make, data = GMCars1) 
 Cars.lm3 = lm(Price ~ Mileage*Make, data = GMCars1) 
 
-GMCars1 = mutate(GMCars1, res1 = resid(Cars.lm), fits1 = fitted(Cars.lm), res2 = resid(Cars.lm2), fits2 = fitted(Cars.lm2), res3 = resid(Cars.lm3), fits3 = fitted(Cars.lm3))
+GMCars1 <- 
+  GMCars1 %>%
+  mutate(
+    res1 = resid(Cars.lm), 
+    fits1 = fitted(Cars.lm), 
+    res2 = resid(Cars.lm2), 
+    fits2 = fitted(Cars.lm2), 
+    res3 = resid(Cars.lm3), 
+    fits3 = fitted(Cars.lm3))
 
-GMCars2 <- read.csv("data/GMCars1.csv")
+GMCars2 <- read_csv("data/GMCars1.csv")
 ```
 
 
@@ -50,7 +58,7 @@ head(GMCars1, 5)    # Shows the first 5 rows of the data
 We will start with a simple linear regression model to predict `Price` from `Mileage`. To fit a linear regression model in R, we will use the function `lm()`.
 
 ```{r SLR, exercise=TRUE}
-Cars.lm = lm(Price ~ Mileage, data = GMCars1)  # Creating a simple linear model
+Cars.lm <- lm(Price ~ Mileage, data = GMCars1)  # Creating a simple linear model
 coef(Cars.lm)
 summary(Cars.lm)
 ```
@@ -89,7 +97,11 @@ When evaluating a regression model, it is useful to check the following conditio
 Regression assumptions about the error terms are generally checked by looking at the residual plots.
 
 ```{r echo = TRUE, eval = FALSE}
-GMCars1 = mutate(GMCars1, res1 = resid(Cars.lm), fits1 = fitted(Cars.lm))
+GMCars1 <- 
+  GMCars1 %>%
+  mutate(
+    res1 = resid(Cars.lm), 
+    fits1 = fitted(Cars.lm))
 ```
 
 
@@ -117,11 +129,16 @@ gf_point(res1 ~ fits1, data = GMCars1)%>%
 While the p-value tends to give some indication that `Mileage` is important, the $R^2$ value indicates that our model is not a good fit. In addition, there was a very clear pattern in the `Residuals vs. Make` plot. Thus we will add this term into our model.
 
 ```{r MRM, exercise=TRUE}
-Cars.lm2 = lm(Price ~ Mileage + Make, data = GMCars1)  # Creating a simple linear model
+Cars.lm2 <- lm(Price ~ Mileage + Make, data = GMCars1)  # Creating a simple linear model
 ```
 
 ```{r echo = TRUE, eval = FALSE}
-GMCars1 = mutate(GMCars1, res2 = resid(Cars.lm2), fits2 = fitted(Cars.lm2))
+GMCars1 <- 
+  GMCars1 %>%
+  mutate(
+    GMCars1, 
+    res2 = resid(Cars.lm2), 
+    fits2 = fitted(Cars.lm2))
 ```
 
 
@@ -167,12 +184,16 @@ After plotting a few more residual plots, try creating a model that you think wo
 Notice that simply adding the `Make` variable intro our model forces the slope to be identicle in all three cases. However, a closer look at the data indicates that their may be an **interaction effect** since the effect of `Mileage` on `Price` appears to depend upon the `Make` of the car. To include interaction terms in our model, we use $X_1*X_2$
 
 ```{r inter1, exercise=TRUE, exercise.eval = TRUE}
-Cars.lm3 = lm(Price ~ Mileage*Make, data = GMCars1)  # Creating a simple linear model
+Cars.lm3 <- lm(Price ~ Mileage*Make, data = GMCars1)  # Creating a simple linear model
 ```
 
 
 ```{r echo = TRUE, eval = FALSE}
-GMCars1 = mutate(GMCars1, res3 = resid(Cars.lm3), fits3 = fitted(Cars.lm3))
+GMCars1 <-
+  GMCars1 %>%
+  mutate(
+    res3 = resid(Cars.lm3), 
+    fits3 = fitted(Cars.lm3))
 ```
 
 
@@ -214,7 +235,7 @@ gf_point(res3 ~ Mileage, data = GMCars1)%>%
 We can try to find the model with the "best" $R^2$ value, by simply putting all the terms in a model. Is the $R^2$ value significantly better than our previous models?
 
 ```{r full1, exercise=TRUE}
-Cars.lm4 = lm(Price ~ Mileage*Make*Doors*Type*Cyl*Liter*Cruise*Sound*Leather, data = GMCars1)
+Cars.lm4 <- lm(Price ~ Mileage*Make*Doors*Type*Cyl*Liter*Cruise*Sound*Leather, data = GMCars1)
 
 summary(Cars.lm4)
 ```
@@ -244,17 +265,17 @@ GMCars2 <- read_csv("data/GMCars2.csv")
 
 
 ```{r corr1, exercise=TRUE}
-model1 = lm(Price ~ Mileage + Liter, data = GMCars2)  # Creating a simple linear model
+model1 <- lm(Price ~ Mileage + Liter, data = GMCars2)  # Creating a simple linear model
 anova(model1)
 ```
 
 ```{r corr2, exercise=TRUE}
-model2 = lm(Price ~ Mileage + Cyl, data = GMCars2)  # Creating a simple linear model
+model2 <- lm(Price ~ Mileage + Cyl, data = GMCars2)  # Creating a simple linear model
 anova(model2)
 ```
 
 ```{r corr3, exercise=TRUE}
-model3 = lm(Price ~ Mileage + Cyl + Liter, data = GMCars2)  # Creating a simple linear model
+model3 <- lm(Price ~ Mileage + Cyl + Liter, data = GMCars2)  # Creating a simple linear model
 anova(model3)
 ```
 

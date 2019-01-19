@@ -60,13 +60,11 @@ if (window.hljs) {
 <li>Sound (1 = upgraded speakers, 0 = standard speakers)</li>
 <li>Leather (1 = leather seats, 0 = not leather seats)</li>
 </ul>
-<p>We start by reading in the data.</p>
-<pre class="r"><code>GMCars1 &lt;- read.csv(&quot;data/GMCars1.csv&quot;)   # Reads the data 
-
-head(GMCars1, 5)    # Shows the first 5 rows of the data </code></pre>
+<p>We start by viewing our data.</p>
+<pre class="r"><code>head(GMCars1, 5)    # Shows the first 5 rows of the data </code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Mileage"],"name":[1],"type":["int"],"align":["right"]},{"label":["Price"],"name":[2],"type":["int"],"align":["right"]},{"label":["Make"],"name":[3],"type":["fctr"],"align":["left"]},{"label":["Type"],"name":[4],"type":["fctr"],"align":["left"]},{"label":["Cyl"],"name":[5],"type":["int"],"align":["right"]},{"label":["Liter"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["Doors"],"name":[7],"type":["int"],"align":["right"]},{"label":["Cruise"],"name":[8],"type":["int"],"align":["right"]},{"label":["Sound"],"name":[9],"type":["int"],"align":["right"]},{"label":["Leather"],"name":[10],"type":["int"],"align":["right"]}],"data":[{"1":"583","2":"70755","3":"Cadillac","4":"Convertible","5":"8","6":"4.6","7":"2","8":"1","9":"1","10":"1","_rn_":"1"},{"1":"788","2":"48310","3":"Cadillac","4":"Sedan","5":"8","6":"4.6","7":"4","8":"1","9":"0","10":"1","_rn_":"2"},{"1":"2202","2":"51154","3":"Cadillac","4":"Sedan","5":"8","6":"5.7","7":"4","8":"1","9":"1","10":"1","_rn_":"3"},{"1":"2616","2":"49366","3":"Cadillac","4":"Sedan","5":"8","6":"4.6","7":"4","8":"1","9":"1","10":"1","_rn_":"4"},{"1":"5499","2":"42820","3":"Cadillac","4":"Sedan","5":"8","6":"4.6","7":"4","8":"1","9":"0","10":"1","_rn_":"5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["Mileage"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Price"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Make"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Type"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Cyl"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Liter"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["Doors"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["Cruise"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["Sound"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["Leather"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["res1"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["fits1"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["res2"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["fits2"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["res3"],"name":[15],"type":["dbl"],"align":["right"]},{"label":["fits3"],"name":[16],"type":["dbl"],"align":["right"]}],"data":[{"1":"583","2":"70755","3":"Cadillac","4":"Convertible","5":"8","6":"4.6","7":"2","8":"1","9":"1","10":"1","11":"37082.54","12":"33672.46","13":"23695.322","14":"47059.68","15":"19185.676","16":"51569.32"},{"1":"788","2":"48310","3":"Cadillac","4":"Sedan","5":"8","6":"4.6","7":"4","8":"1","9":"0","10":"1","11":"14680.88","12":"33629.12","13":"1294.322","14":"47015.68","15":"-3165.948","16":"51475.95"},{"1":"2202","2":"51154","3":"Cadillac","4":"Sedan","5":"8","6":"5.7","7":"4","8":"1","9":"1","10":"1","11":"17823.83","12":"33330.17","13":"4441.811","14":"46712.19","15":"322.115","16":"50831.89"},{"1":"2616","2":"49366","3":"Cadillac","4":"Sedan","5":"8","6":"4.6","7":"4","8":"1","9":"1","10":"1","11":"16123.35","12":"33242.65","13":"2742.668","14":"46623.33","15":"-1277.312","16":"50643.31"},{"1":"5499","2":"42820","3":"Cadillac","4":"Sedan","5":"8","6":"4.6","7":"4","8":"1","9":"0","10":"1","11":"10186.87","12":"32633.13","13":"-3184.549","14":"46004.55","15":"-6510.134","16":"49330.13"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -74,7 +72,7 @@ head(GMCars1, 5)    # Shows the first 5 rows of the data </code></pre>
 <h2>Simple Linear Regression</h2>
 <p>We will start with a simple linear regression model to predict <code>Price</code> from <code>Mileage</code>. To fit a linear regression model in R, we will use the function <code>lm()</code>.</p>
 <div class="tutorial-exercise" data-label="SLR" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code>Cars.lm = lm(Price ~ Mileage, data = GMCars1)  # Creating a simple linear model
+<pre class="text"><code>Cars.lm &lt;- lm(Price ~ Mileage, data = GMCars1)  # Creating a simple linear model
 coef(Cars.lm)
 summary(Cars.lm)</code></pre>
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
@@ -105,7 +103,11 @@ summary(Cars.lm)</code></pre>
 </ul>
 <p><strong>These conditions are only required to be met if you are conducting a hypothesis test.</strong> However, even if you are only trying to find a model with a good fit, these conditions are important. If there are clear patterns in the residuals, it is likely that there is a better model that can be fit.</p>
 <p>Regression assumptions about the error terms are generally checked by looking at the residual plots.</p>
-<pre class="r"><code>GMCars1 = mutate(GMCars1, res1 = resid(Cars.lm), fits1 = fitted(Cars.lm))</code></pre>
+<pre class="r"><code>GMCars1 &lt;- 
+  GMCars1 %&gt;%
+  mutate(
+    res1 = resid(Cars.lm), 
+    fits1 = fitted(Cars.lm))</code></pre>
 <div class="tutorial-exercise" data-label="SLR5" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>gf_histogram(~ res1, data = GMCars1)</code></pre>
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
@@ -119,7 +121,7 @@ summary(Cars.lm)</code></pre>
 <ul>
 <li>Does the histogram indicate that the error terms are normally distributed?</li>
 <li>Does the residual verses fits plot indicate equal variances for all values of <code>Mileage</code>?</li>
-<li>Create a plot of Residuals vs. Mileage? Are their any clear patterns in the plot?</li>
+<li>Create a plot of Residuals vs. Mileage. Are their any clear patterns in the plot?</li>
 <li>Create a plot of Residuals vs. other potential explanatory variables. Are their any clear patterns in these plots? Recall the other possible explanatory variables are Make, Type, Cyl, Liter, Doors, Cruise, Sound, and Leather.</li>
 </ul>
 </div>
@@ -127,10 +129,15 @@ summary(Cars.lm)</code></pre>
 <h2>More than one explanatory variable</h2>
 <p>While the p-value tends to give some indication that <code>Mileage</code> is important, the <span class="math inline">\(R^2\)</span> value indicates that our model is not a good fit. In addition, there was a very clear pattern in the <code>Residuals vs. Make</code> plot. Thus we will add this term into our model.</p>
 <div class="tutorial-exercise" data-label="MRM" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code>Cars.lm2 = lm(Price ~ Mileage + Make, data = GMCars1)  # Creating a simple linear model</code></pre>
+<pre class="text"><code>Cars.lm2 &lt;- lm(Price ~ Mileage + Make, data = GMCars1)  # Creating a simple linear model</code></pre>
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
 </div>
-<pre class="r"><code>GMCars1 = mutate(GMCars1, res2 = resid(Cars.lm2), fits2 = fitted(Cars.lm2))</code></pre>
+<pre class="r"><code>GMCars1 &lt;- 
+  GMCars1 %&gt;%
+  mutate(
+    GMCars1, 
+    res2 = resid(Cars.lm2), 
+    fits2 = fitted(Cars.lm2))</code></pre>
 <div class="tutorial-exercise" data-label="MRM2" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>gf_point(Price ~ Mileage, data = GMCars1, color = ~ Make)%&gt;%
   gf_line(fits2 ~ Mileage)</code></pre>
@@ -164,10 +171,14 @@ gf_point(res2 ~ Mileage, data = GMCars1)%&gt;%
 <h2>Interaction Terms</h2>
 <p>Notice that simply adding the <code>Make</code> variable intro our model forces the slope to be identicle in all three cases. However, a closer look at the data indicates that their may be an <strong>interaction effect</strong> since the effect of <code>Mileage</code> on <code>Price</code> appears to depend upon the <code>Make</code> of the car. To include interaction terms in our model, we use <span class="math inline">\(X_1*X_2\)</span></p>
 <div class="tutorial-exercise" data-label="inter1" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code>Cars.lm3 = lm(Price ~ Mileage*Make, data = GMCars1)  # Creating a simple linear model</code></pre>
+<pre class="text"><code>Cars.lm3 &lt;- lm(Price ~ Mileage*Make, data = GMCars1)  # Creating a simple linear model</code></pre>
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
 </div>
-<pre class="r"><code>GMCars1 = mutate(GMCars1, res3 = resid(Cars.lm3), fits3 = fitted(Cars.lm3))</code></pre>
+<pre class="r"><code>GMCars1 &lt;-
+  GMCars1 %&gt;%
+  mutate(
+    res3 = resid(Cars.lm3), 
+    fits3 = fitted(Cars.lm3))</code></pre>
 <div class="tutorial-exercise" data-label="inter2" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>gf_point(Price ~ Mileage, data = GMCars1, color = ~ Make)%&gt;%
   gf_line(fits2~Mileage)
@@ -200,7 +211,7 @@ gf_point(res3 ~ Mileage, data = GMCars1)%&gt;%
 <h2>What is the best possible model?</h2>
 <p>We can try to find the model with the “best” <span class="math inline">\(R^2\)</span> value, by simply putting all the terms in a model. Is the <span class="math inline">\(R^2\)</span> value significantly better than our previous models?</p>
 <div class="tutorial-exercise" data-label="full1" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code>Cars.lm4 = lm(Price ~ Mileage*Make*Doors*Type*Cyl*Liter*Cruise*Sound*Leather, data = GMCars1)
+<pre class="text"><code>Cars.lm4 &lt;- lm(Price ~ Mileage*Make*Doors*Type*Cyl*Liter*Cruise*Sound*Leather, data = GMCars1)
 
 summary(Cars.lm4)</code></pre>
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
@@ -219,17 +230,17 @@ summary(Cars.lm4)</code></pre>
 <p>Below we use another cars dataset to determine the relationship between <code>Cyl</code> and <code>Liter</code> on <code>Price</code>.</p>
 <pre class="r"><code>GMCars2 &lt;- read_csv(&quot;data/GMCars2.csv&quot;)</code></pre>
 <div class="tutorial-exercise" data-label="corr1" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code>model1 = lm(Price ~ Mileage + Liter, data = GMCars2)  # Creating a simple linear model
+<pre class="text"><code>model1 &lt;- lm(Price ~ Mileage + Liter, data = GMCars2)  # Creating a simple linear model
 anova(model1)</code></pre>
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
 </div>
 <div class="tutorial-exercise" data-label="corr2" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code>model2 = lm(Price ~ Mileage + Cyl, data = GMCars2)  # Creating a simple linear model
+<pre class="text"><code>model2 &lt;- lm(Price ~ Mileage + Cyl, data = GMCars2)  # Creating a simple linear model
 anova(model2)</code></pre>
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
 </div>
 <div class="tutorial-exercise" data-label="corr3" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code>model3 = lm(Price ~ Mileage + Cyl + Liter, data = GMCars2)  # Creating a simple linear model
+<pre class="text"><code>model3 &lt;- lm(Price ~ Mileage + Cyl + Liter, data = GMCars2)  # Creating a simple linear model
 anova(model3)</code></pre>
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
 </div>
@@ -261,7 +272,24 @@ library(readr)
 knitr::opts_chunk$set(echo = FALSE)
 options(scipen = 100)
 #options(digits=2)
-#theme_set(theme_bw)
+theme_set(theme_bw())
+
+GMCars1 <- read_csv("data/GMCars1.csv")
+Cars.lm = lm(Price ~ Mileage, data = GMCars1)
+Cars.lm2 = lm(Price ~ Mileage + Make, data = GMCars1) 
+Cars.lm3 = lm(Price ~ Mileage*Make, data = GMCars1) 
+
+GMCars1 <- 
+  GMCars1 %>%
+  mutate(
+    res1 = resid(Cars.lm), 
+    fits1 = fitted(Cars.lm), 
+    res2 = resid(Cars.lm2), 
+    fits2 = fitted(Cars.lm2), 
+    res3 = resid(Cars.lm3), 
+    fits3 = fitted(Cars.lm3))
+
+GMCars2 <- read_csv("data/GMCars1.csv")
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
