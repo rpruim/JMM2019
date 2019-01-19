@@ -224,14 +224,14 @@ summary(Cars.lm4)
 ```
 
 
-This model appears to have a fairly good adjusted $R^2$ value However, this may still not be the best model. There are many transformations, such as the $log(Price)$, that may dramatically help the model. In addition we have not made any attempt to consider quadratic or cubic terms in our model. The growing number of large data sets as well as increasing computer power has dramatically improved the ability of researchers to find a parsimonious model (a model that carefully selects a relatively small number of the most useful explanatory variables). However, even with intensive computing power, the process of finding a “best” model is often more of an art than a science.
+This model appears to have a fairly good adjusted $R^2$ value However, this may still not be the best model. There are many transformations, such as the $log(Price)$, that may dramatically help the model. In addition we have not made any attempt to consider quadratic or cubic terms in our model. The growing number of large data sets as well as increasing computer power has dramatically improved the ability of researchers to find a parsimonious model (a model that carefully selects a relatively small number of the most useful explanatory variables). However, even with intensive computing power, the process of finding a "best" model is often more of an art than a science.
 
 Automoated multivariate regression procedures (the process of using prespecified conditions to automatically add or delete
 variables) can have some limitations:
 
 * When explanatory variables are correlated, automated procedures often fail to include variables that are useful in describing the results.
 *  Automated procedures tend to **overfit** the data (fit unhelpful variables) by searching for any terms that explain the variability in the sample results. This chance variability in the sample results may not be reflected in the entire population from which the sample was collected.
-* The automated procedures provides output that looks like a “best” model, but that can be easily misinterpreted, since it doesn’t require a researcher to explore the data to get an intuitive feel for the data. For example, automated procedures don’t encourage researchers to look at residual plots that may reveal interesting patterns within the data.
+* The automated procedures provides output that looks like a "best" model, but that can be easily misinterpreted, since it doesn't require a researcher to explore the data to get an intuitive feel for the data. For example, automated procedures don't encourage researchers to look at residual plots that may reveal interesting patterns within the data.
 
 
 
