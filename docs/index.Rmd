@@ -208,9 +208,10 @@ and download these files:
 
     * [Tutorial @ shinyapps.io](https://rpruim.shinyapps.io/BayesCars/)
     * [Rmd](ModelingCars/Bayes/BayesCars.Rmd)
-    * [the models](ModelingCars/Bayes/Cars_brm.Rda)
+    * [the models](ModelingCars/Bayes/Cars_brm.Rda) (Rda file used in tutorial)
     
 * Modeling Cars with `do()` [Simulation Based Inference]
+    * [mosaic package vignette](https://cran.r-project.org/web/packages/mosaic/vignettes/Resampling.pdf)
 
 #### Bonus Material
 
