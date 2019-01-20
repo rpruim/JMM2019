@@ -84,7 +84,7 @@ complicated.
 To save some time, the following models have been fit already:
 
 
-```{r, eval = FALSE}
+```{r eval = FALSE, echo = TRUE}
 library(brms)
 Cars.brm1 <- brm(Price ~ Mileage,        data = GMCars1)
 Cars.brm2 <- brm(Price ~ Mileage + Make, data = GMCars1) 
@@ -144,7 +144,7 @@ good priors, just to demonstrate how a prior is set.  Many other distributions b
 a normal distribution can be used.
 
 
-```{r, eval = FALSE}
+```{r eval = FALSE, echo = TRUE}
 library(brms)
 Cars.brm1a <- 
   brm(Price ~ Mileage,        data = GMCars1,
